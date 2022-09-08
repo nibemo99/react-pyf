@@ -1,8 +1,11 @@
 #rooot {
-    background-color: brown;
-    min-width: 300px;
-    max-width: 40%;
-    top: 0;
-    right: 0;
-    z-index: 1;
+  background-color: brown;
+  min-width: 300px;
+  max-width: 500px;
+  margin: 2rem auto;
+  text-align: center;
+  min-height: 90%;
+}
+h1 {
+    margin: 0;
 }
