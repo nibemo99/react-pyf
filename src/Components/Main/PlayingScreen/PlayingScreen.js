@@ -55,6 +55,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
                 e.target.value = ''
                 return avisoRevisarInput('undefined')
             }
+            // test
 
 
             (!!!intentos[intentos.length - 1])
