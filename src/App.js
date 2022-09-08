@@ -17,10 +17,9 @@ function App() {
 
 
   // funcionesss
-  function addToLocalStorage(e, status) {
+  function addToLocalStorage(e, date, status) {
     if (localStorage.historial === undefined) localStorage.historial = JSON.stringify([])
     let temp = JSON.parse(localStorage.historial)
-    let date = bringDate()
     temp.push({
       date: `${date}`,
       data: e,
@@ -28,10 +27,6 @@ function App() {
     })
     localStorage.historial = JSON.stringify(temp)
     console.log('recien lo guarde', JSON.parse(localStorage.historial));
-  }
-  function bringDate () {
-    let x = new Date()
-    return x.toDateString()
   }
 
 

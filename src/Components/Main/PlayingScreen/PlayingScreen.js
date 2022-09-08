@@ -33,6 +33,8 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
     const [intentos, setIntentos] = useState([])
     const estilos = 'border border-blue-400 '
 
+    var flagEqualInput = false
+
 
     // funciones
     function clickHandler(e) {
@@ -43,19 +45,28 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
     }
     function inputHandler(e) {
         let ENTER_KEY = 13
+        // si se presional enter
         if (e.keyCode === ENTER_KEY) {
-            if (e.target.value.length !== 4) {
-                return avisoRevisarInput()
-            }
-            else if (!e.target.value) {
+
+            // si la longitud es distinta de 4
+            if (e.target.value.length !== 4) return avisoRevisarInput('lenght')
+
+            if (!e.target.value) {
                 e.target.value = ''
-                return avisoRevisarInput()
+                return avisoRevisarInput('undefined')
             }
-            validarResultado(e.target.value);
+
+
+            (!!!intentos[intentos.length - 1])
+                ? validarResultado(e.target.value)
+                : (intentos[intentos.length - 1].numero === e.target.value)
+                    ? avisoRevisarInput('same')
+                    : validarResultado(e.target.value)
+
         }
     }
     function validarResultado(e) {
-        console.log(e, typeof (e));
+        // console.log(e, typeof (e));
         let picas = 0
         let fijas = 0
         for (let i = 0; i < 4; i++) {
@@ -65,10 +76,12 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
         if (e[1] === randomNumber[2] || e[1] === randomNumber[3]) picas++
         if (e[2] === randomNumber[3]) picas++
 
-        setIntentos([...intentos, { numero: e, picas: `${picas}`, fijas: `${fijas}` }])
+        let temp = { numero: e, picas: `${picas}`, fijas: `${fijas}` }
+        setIntentos([...intentos, temp])
 
         if (fijas === 4) {
-            addToLocalStorage(intentos, true)
+            let date = bringDate()
+            addToLocalStorage([...intentos, temp], date, true)
             // reemplazar el input por un boton de intentar de nuevo
             // cambiar el titulo del juego por 'Felicidades!'
             // Que salgan fuegos artificiales.
@@ -76,9 +89,16 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
 
 
     }
+    function bringDate() {
+        let x = new Date()
+        return x.toTimeString()
+    }
+
     function validarInput(e) {
         let input = e.target.value
         let temp = Array.from(input)
+
+
 
         // si se detecta un menos, se ataca de una
         if (input[0] === '-') {
@@ -108,8 +128,8 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
             }
         }
     }
-    function avisoRevisarInput() {
-        console.log(`revisa input`);
+    function avisoRevisarInput(e) {
+        console.log(`revisa: ${e}`);
     }
 
 
@@ -120,7 +140,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
                     onClick={() => clickHandler('main')}
                     className={estilos}
                 >Terminar</button>
-                <span onClick={() => addToLocalStorage('hola')} className={estilos} >tries</span>
+                <span onClick={() => console.log(randomNumber)} className={estilos} >{intentos.length}</span>
 
             </div>
 
