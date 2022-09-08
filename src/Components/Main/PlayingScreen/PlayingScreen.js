@@ -42,12 +42,31 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber }) => {
         }
     }
     function inputHandler(e) {
-        if (e.keyCode === 13) {
+        let ENTER_KEY = 13
+        if (e.keyCode === ENTER_KEY) {
+            if (e.target.value.length !== 4) {
+                return avisoRevisarInput()
+            }
+            else if (!e.target.value) {
+                e.target.value = ''
+                return avisoRevisarInput()
+            }
             validarResultado(e.target.value);
         }
     }
     function validarResultado(e) {
-        // body
+        console.log(e, typeof (e));
+        let picas = 0
+        let fijas = 0
+        for (let i = 0; i < 4; i++) {
+            if (e[i] === randomNumber[i]) fijas++
+        }
+        if (e[0] === randomNumber[1] || e[0] === randomNumber[2] || e[0] === randomNumber[3]) picas++
+        if (e[1] === randomNumber[2] || e[1] === randomNumber[3]) picas++
+        if (e[2] === randomNumber[3]) picas++
+
+        setIntentos([...intentos, { numero: e, picas: `${picas}`, fijas: `${fijas}` }])
+
     }
     function validarInput(e) {
         let input = e.target.value
@@ -80,9 +99,11 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber }) => {
                 e.target.value = temp.toString().replaceAll(',', '')
             }
         }
-
-
     }
+    function avisoRevisarInput() {
+        console.log(`revisa input`);
+    }
+
 
     return (
         <div className='border border-black w-4/5 mx-auto py-4 '>
@@ -98,12 +119,13 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber }) => {
             <Intentos>
                 {
                     intentos.map((element, index) => {
+                        console.log(element);
                         return <Intento key={index} element={element} />
                     })
                 }
             </Intentos>
 
-            <input type='number'  onKeyUp={inputHandler} onChange={validarInput} />
+            <input type='number' onKeyUp={inputHandler} onChange={validarInput} />
         </div>
     )
 }
