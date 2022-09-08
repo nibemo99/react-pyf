@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './../Main.css'
 
 export const MainScreen = ({ setMainDisplay, setRandomNumber }) => {

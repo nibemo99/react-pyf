@@ -33,8 +33,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
     const [intentos, setIntentos] = useState([])
     const estilos = 'border border-blue-400 '
 
-    var flagEqualInput = false
-
+    randomNumber = '7480'
 
     // funciones
     function clickHandler(e) {
@@ -71,11 +70,20 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
         let picas = 0
         let fijas = 0
         for (let i = 0; i < 4; i++) {
-            if (e[i] === randomNumber[i]) fijas++
+            if (e[i] === randomNumber[i]) { fijas++; console.log(e[i], 'es fija'); }
         }
-        if (e[0] === randomNumber[1] || e[0] === randomNumber[2] || e[0] === randomNumber[3]) picas++
-        if (e[1] === randomNumber[2] || e[1] === randomNumber[3]) picas++
-        if (e[2] === randomNumber[3]) picas++
+        console.log(e, randomNumber);
+        for (let i = 0; i < randomNumber.length; i++) {
+            for (let j = 0; j < e.length; j++) {
+                if (i !== j) {
+                    if (randomNumber[i] === e[j]) {
+                        picas++
+                        console.log(i, ' es igual a ', j);
+                    }
+                }
+            }
+        }
+
 
         let temp = { numero: e, picas: `${picas}`, fijas: `${fijas}` }
         setIntentos([...intentos, temp])
