@@ -5,40 +5,40 @@ import { Intentos } from './Intentos'
 
 
 
-var arrayTemporal = [
-    {
-        numero: '1111',
-        picas: '1',
-        fijas: '1',
-    },
-    {
-        numero: '2222',
-        picas: '2',
-        fijas: '2',
-    },
-    {
-        numero: '3333',
-        picas: '3',
-        fijas: '3',
-    },
-    {
-        numero: '4444',
-        picas: '4',
-        fijas: '4',
-    },
-]
+// var arrayTemporal = [
+//     {
+//         numero: '1111',
+//         picas: '1',
+//         fijas: '1',
+//     },
+//     {
+//         numero: '2222',
+//         picas: '2',
+//         fijas: '2',
+//     },
+//     {
+//         numero: '3333',
+//         picas: '3',
+//         fijas: '3',
+//     },
+//     {
+//         numero: '4444',
+//         picas: '4',
+//         fijas: '4',
+//     },
+// ]
 
-export const PlayingScreen = ({ setMainDisplay, randomNumber }) => {
+export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage }) => {
     // estados
-    const [intentos, setIntentos] = useState(arrayTemporal)
+    const [intentos, setIntentos] = useState([])
     const estilos = 'border border-blue-400 '
 
 
     // funciones
     function clickHandler(e) {
-        (e === 'main') && setMainDisplay('main')
-        if (e === 'hola') {
-            setIntentos([...intentos, { numero: randomNumber }])
+        if (e === 'main') {
+            setMainDisplay('main')
+
         }
     }
     function inputHandler(e) {
@@ -66,6 +66,14 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber }) => {
         if (e[2] === randomNumber[3]) picas++
 
         setIntentos([...intentos, { numero: e, picas: `${picas}`, fijas: `${fijas}` }])
+
+        if (fijas === 4) {
+            addToLocalStorage(intentos, true)
+            // reemplazar el input por un boton de intentar de nuevo
+            // cambiar el titulo del juego por 'Felicidades!'
+            // Que salgan fuegos artificiales.
+        }
+
 
     }
     function validarInput(e) {
@@ -112,14 +120,13 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber }) => {
                     onClick={() => clickHandler('main')}
                     className={estilos}
                 >Terminar</button>
-                <span onClick={() => clickHandler('hola')} className={estilos} >tries</span>
+                <span onClick={() => addToLocalStorage('hola')} className={estilos} >tries</span>
 
             </div>
 
             <Intentos>
                 {
                     intentos.map((element, index) => {
-                        console.log(element);
                         return <Intento key={index} element={element} />
                     })
                 }

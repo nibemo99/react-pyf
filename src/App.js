@@ -11,9 +11,28 @@ import { ComoJugar } from './Components/Main/ComoJugar/ComoJugar';
 
 
 function App() {
-
+  // useStatesss
   const [mainDisplay, setMainDisplay] = useState('main')
   const [randomNumber, setRandomNumber] = useState(0)
+
+
+  // funcionesss
+  function addToLocalStorage(e, status) {
+    if (localStorage.historial === undefined) localStorage.historial = JSON.stringify([])
+    let temp = JSON.parse(localStorage.historial)
+    let date = bringDate()
+    temp.push({
+      date: `${date}`,
+      data: e,
+      completed: status,
+    })
+    localStorage.historial = JSON.stringify(temp)
+    console.log('recien lo guarde', JSON.parse(localStorage.historial));
+  }
+  function bringDate () {
+    let x = new Date()
+    return x.toDateString()
+  }
 
 
   return (
@@ -35,6 +54,7 @@ function App() {
             <PlayingScreen
               setMainDisplay={setMainDisplay}
               randomNumber={randomNumber}
+              addToLocalStorage={addToLocalStorage}
             />}
 
           {(mainDisplay === 'hist') &&
