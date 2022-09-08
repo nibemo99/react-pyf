@@ -28,12 +28,13 @@ import { Intentos } from './Intentos'
 //     },
 // ]
 
-export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage }) => {
+export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage, setTitle, finished, setFinished }) => {
     // estados
     const [intentos, setIntentos] = useState([])
     const estilos = 'border border-blue-400 '
 
     randomNumber = '7480'
+
 
     // funciones
     function clickHandler(e) {
@@ -54,8 +55,6 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
                 e.target.value = ''
                 return avisoRevisarInput('undefined')
             }
-            // test
-
 
             (!!!intentos[intentos.length - 1])
                 ? validarResultado(e.target.value)
@@ -65,44 +64,10 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
 
         }
     }
-    function validarResultado(e) {
-        // console.log(e, typeof (e));
-        let picas = 0
-        let fijas = 0
-        for (let i = 0; i < 4; i++) {
-            if (e[i] === randomNumber[i]) { fijas++; console.log(e[i], 'es fija'); }
-        }
-        console.log(e, randomNumber);
-        for (let i = 0; i < randomNumber.length; i++) {
-            for (let j = 0; j < e.length; j++) {
-                if (i !== j) {
-                    if (randomNumber[i] === e[j]) {
-                        picas++
-                        console.log(i, ' es igual a ', j);
-                    }
-                }
-            }
-        }
-
-
-        let temp = { numero: e, picas: `${picas}`, fijas: `${fijas}` }
-        setIntentos([...intentos, temp])
-
-        if (fijas === 4) {
-            let date = bringDate()
-            addToLocalStorage([...intentos, temp], date, true)
-            // reemplazar el input por un boton de intentar de nuevo
-            // cambiar el titulo del juego por 'Felicidades!'
-            // Que salgan fuegos artificiales.
-        }
-
-
-    }
     function bringDate() {
         let x = new Date()
         return x.toTimeString()
     }
-
     function validarInput(e) {
         let input = e.target.value
         let temp = Array.from(input)
@@ -140,7 +105,48 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
     function avisoRevisarInput(e) {
         console.log(`revisa: ${e}`);
     }
+    function validarResultado(e) {
+        // console.log(e, typeof (e));
+        let picas = 0
+        let fijas = 0
+        for (let i = 0; i < 4; i++) {
+            if (e[i] === randomNumber[i]) { fijas++; console.log(e[i], 'es fija'); }
+        }
+        console.log(e, randomNumber);
+        for (let i = 0; i < randomNumber.length; i++) {
+            for (let j = 0; j < e.length; j++) {
+                if (i !== j) {
+                    if (randomNumber[i] === e[j]) {
+                        picas++
+                        console.log(i, ' es igual a ', j);
+                    }
+                }
+            }
+        }
 
+
+        let temp = { numero: e, picas: `${picas}`, fijas: `${fijas}` }
+        setIntentos([...intentos, temp])
+
+        if (fijas === 4) {
+            let date = bringDate()
+            addToLocalStorage([...intentos, temp], date, true)
+            setTitle('Felicidades!')
+            setFinished(true)
+            // reemplazar el input por un boton de intentar de nuevo
+            // cambiar el titulo del juego por 'Felicidades!'
+            // Que salgan fuegos artificiales.
+        }
+
+
+    }
+    function reseteo() {
+        setMainDisplay('main')
+        setTimeout(() => {
+            setMainDisplay('main')
+        }, 100);
+        setFinished(false)
+    }
 
     return (
         <div className='border border-black w-4/5 mx-auto py-4 '>
@@ -149,6 +155,10 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
                     onClick={() => clickHandler('main')}
                     className={estilos}
                 >Terminar</button>
+                <button
+                    onClick={reseteo}
+                    className={estilos}
+                >Reiniciar</button>
                 <span onClick={() => console.log(randomNumber)} className={estilos} >{intentos.length}</span>
 
             </div>
@@ -160,8 +170,11 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage 
                     })
                 }
             </Intentos>
+            {(!finished) && (<input type='number' onKeyUp={inputHandler} onChange={validarInput} />)}
+            {(finished) && (<span>Lo encontraste</span>)}
 
-            <input type='number' onKeyUp={inputHandler} onChange={validarInput} />
+
+
         </div>
     )
 }
