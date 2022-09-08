@@ -14,7 +14,8 @@ function App() {
   // useStatesss
   const [mainDisplay, setMainDisplay] = useState('main')
   const [randomNumber, setRandomNumber] = useState(0)
-
+  const [title, setTitle] = useState('Picas y Fijas')
+  const [finished, setFinished] = useState(false)
 
   // funcionesss
   function addToLocalStorage(e, date, status) {
@@ -34,7 +35,9 @@ function App() {
     <>
       <Wrapper>
         <Header>
-          <h1 className='font-serif italic py-10 text-6xl hover:scale-x-105 hover:rotate-3 ease-in-out duration-100'>Picas y Fijas</h1>
+          <h1 className='font-serif italic py-10 text-6xl hover:scale-x-105 hover:rotate-3 ease-in-out duration-100'>
+            {title}
+          </h1>
         </Header>
 
         <Main>
@@ -50,6 +53,9 @@ function App() {
               setMainDisplay={setMainDisplay}
               randomNumber={randomNumber}
               addToLocalStorage={addToLocalStorage}
+              setTitle={setTitle}
+              finished={finished}
+              setFinished={setFinished}
             />}
 
           {(mainDisplay === 'hist') &&
