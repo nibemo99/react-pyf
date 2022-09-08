@@ -1,7 +1,26 @@
 import React from 'react'
 
-export const Historial = () => {
+export const Historial = ({ setMainDisplay }) => {
+
+  function clickHandler() {
+    setMainDisplay('main')
+  }
+
+
   return (
-    <div>Historial</div>
+
+    <div>
+
+      <button
+        onClick={clickHandler}
+        className='border-blue-400'
+      >
+        Regresar</button>
+
+
+      Historial
+
+
+    </div>
   )
 }

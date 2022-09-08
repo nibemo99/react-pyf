@@ -6,25 +6,47 @@ import { MainScreen } from './Components/Main/MainScreen/MainScreen';
 import { PlayingScreen } from './Components/Main/PlayingScreen/PlayingScreen';
 import { Historial } from './Components/Main/Historial/Historial'
 import { useState } from 'react';
+import { ComoJugar } from './Components/Main/ComoJugar/ComoJugar';
 
 
 
 function App() {
 
   const [mainDisplay, setMainDisplay] = useState('main')
+  const [randomNumber, setRandomNumber] = useState(0)
+
 
   return (
     <>
       <Wrapper>
         <Header>
-          <h1>app principal</h1>
+          <h1 className='font-serif italic py-10 text-6xl hover:scale-x-105 hover:rotate-3 ease-in-out duration-100'>Picas y Fijas</h1>
         </Header>
 
         <Main>
           {/* aqui se renderizan los botones o lo que sea */}
-          {(mainDisplay === 'main') && <MainScreen setMainDisplay={setMainDisplay} />}
-          {(mainDisplay === 'play') && <PlayingScreen setMainDisplay={setMainDisplay} />}
-          {(mainDisplay === 'play') && <Historial setMainDisplay={setMainDisplay} />}
+          {(mainDisplay === 'main') &&
+            <MainScreen
+              setMainDisplay={setMainDisplay}
+              setRandomNumber={setRandomNumber}
+            />}
+
+          {(mainDisplay === 'play') &&
+            <PlayingScreen
+              setMainDisplay={setMainDisplay}
+              randomNumber={randomNumber}
+            />}
+
+          {(mainDisplay === 'hist') &&
+            <Historial
+              setMainDisplay={setMainDisplay}
+            />}
+
+          {(mainDisplay === 'howto') &&
+            <ComoJugar
+              setMainDisplay={setMainDisplay}
+            />}
+
 
 
         </Main>
