@@ -1,32 +1,10 @@
+// INICIO
 import React, { useState } from 'react'
 import './../Main.css'
 import { Intento } from './Intento'
 import { Intentos } from './Intentos'
 
 
-
-// var arrayTemporal = [
-//     {
-//         numero: '1111',
-//         picas: '1',
-//         fijas: '1',
-//     },
-//     {
-//         numero: '2222',
-//         picas: '2',
-//         fijas: '2',
-//     },
-//     {
-//         numero: '3333',
-//         picas: '3',
-//         fijas: '3',
-//     },
-//     {
-//         numero: '4444',
-//         picas: '4',
-//         fijas: '4',
-//     },
-// ]
 
 export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage, setTitle, finished, setFinished }) => {
     // estados
@@ -133,6 +111,9 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage,
             addToLocalStorage([...intentos, temp], date, true)
             setTitle('Felicidades!')
             setFinished(true)
+            setTimeout(() => {
+                setTitle('Picas y Fijas')
+            }, 3000);
             // reemplazar el input por un boton de intentar de nuevo
             // cambiar el titulo del juego por 'Felicidades!'
             // Que salgan fuegos artificiales.

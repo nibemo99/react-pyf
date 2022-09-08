@@ -35,12 +35,15 @@ function App() {
     <>
       <Wrapper>
         <Header>
-          <h1 className='font-serif italic py-10 text-6xl hover:scale-x-105 hover:rotate-3 ease-in-out duration-100'>
-            {title}
-          </h1>
+          <div>
+            <h1 className='font-serif italic py-10 text-6xl hover:scale-x-105 hover:rotate-3 ease-in-out duration-100'>
+              {title}
+            </h1>
+
+          </div>
         </Header>
 
-        <Main>
+        <Main className=''>
           {/* aqui se renderizan los botones o lo que sea */}
           {(mainDisplay === 'main') &&
             <MainScreen

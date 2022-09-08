@@ -35,7 +35,7 @@ export const MainScreen = ({ setMainDisplay, setRandomNumber }) => {
             {/* <button>Reanudar</button> */}
             <button onClick={() => clickHandler('play')} className={estilos} >Nuevo juego</button>
             <button onClick={() => clickHandler('hist')} className={estilos} >Historial</button>
-            <button onClick={() => clickHandler('howto')} className={estilos} >Como jugar</button>
+            <button disabled onClick={() => clickHandler('howto')} className={estilos} >Como jugar</button>
         </div>
     )
 }
