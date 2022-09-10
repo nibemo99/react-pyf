@@ -6,18 +6,30 @@ import { Intentos } from './Intentos'
 
 
 
-export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage, setTitle, finished, setFinished }) => {
+export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage, setTitle }) => {
     // estados
     const [intentos, setIntentos] = useState([])
     const estilos = 'border border-blue-400 '
+    const [finished, setFinished] = useState(false)
 
-    randomNumber = '7480'
 
+    // randomNumber = Math.random() * 10
+    console.log('render de playingscreen', randomNumber);
 
     // funciones
     function clickHandler(e) {
-        if (e === 'main') {
-            setMainDisplay('main')
+        if (e === 'menu') {
+            setMainDisplay(e)
+        }
+        if (e === 'reseteo') {
+            setTitle('Reiniciado ✔️')
+            setTimeout(() => {
+                setTitle('A jugar! 🤔')
+            }, 2000);
+            setTimeout(() => {
+                setTitle('Picas y Fijas')
+            }, 10000);
+            console.log('reseteo');
 
         }
     }
@@ -121,25 +133,19 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage,
 
 
     }
-    function reseteo() {
-        setMainDisplay('main')
-        setTimeout(() => {
-            setMainDisplay('main')
-        }, 100);
-        setFinished(false)
-    }
+
 
     return (
         <div className='border border-black w-4/5 mx-auto py-4 '>
             <div id='botonera' className='flex gap-8 justify-center'>
                 <button
-                    onClick={() => clickHandler('main')}
-                    className={estilos}
-                >Terminar</button>
-                <button
-                    onClick={reseteo}
+                    onClick={() => clickHandler('reseteo')}
                     className={estilos}
                 >Reiniciar</button>
+                <button
+                    onClick={() => clickHandler('menu')}
+                    className={estilos}
+                >Regresar</button>
                 <span onClick={() => console.log(randomNumber)} className={estilos} >{intentos.length}</span>
 
             </div>

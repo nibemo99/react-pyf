@@ -31,7 +31,8 @@ function App() {
 
   //calculando el random number
   let randomNumber = 0
-  let temp
+  let temp = 0
+  
 
   if(title === 'Picas y Fijas')
 
