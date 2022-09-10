@@ -3,13 +3,15 @@ import './../Main.css'
 
 export const MenuScreen = ({ setMainDisplay, calcRandonNumber, setRandomNumber, setTitle }) => {
     // estados
-    const estilos = 'w-2/3 py-4 border  border-blue-400 hover:bg-blue-400 hover:text-white hover:scale-105 ease-out duration-500'
+    const estilos = 'w-2/3 py-4 border  border-blue-400 hover:bg-blue-400 hover:text-white hover:scale-105 focus:bg-blue-400 focus:text-white focus:scale-105 ease-out duration-500'
 
 
     // funciones
     const clickHandler = (e) => {
-        setRandomNumber(calcRandonNumber)
-        setTitle('A jugar! 🤔')
+        if (e === 'play') {
+            setRandomNumber(calcRandonNumber)
+            setTitle('A jugar! 🤔')
+        }
         setMainDisplay(e)
     }
 

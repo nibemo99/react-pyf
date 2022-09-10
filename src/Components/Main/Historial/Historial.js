@@ -11,7 +11,7 @@ export const Historial = ({ setMainDisplay }) => {
 
   // funciones
   function clickHandler() {
-    setMainDisplay('main')
+    setMainDisplay('menu')
   }
 
 
@@ -26,7 +26,7 @@ export const Historial = ({ setMainDisplay }) => {
 
           {
             JSON.parse(localStorage.historial).map((element, index) => {
-              return <button id={index} onClick={(e) => { setRenderLista(e.target.attributes.id.nodeValue); }} >{element.date}</button>
+              return <button key={index} id={index} onClick={(e) => { setRenderLista(e.target.attributes.id.nodeValue); }} >{element.date}</button>
 
             })
           }
