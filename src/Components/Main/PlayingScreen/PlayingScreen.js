@@ -6,11 +6,11 @@ import { Intentos } from './Intentos'
 
 
 
-export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage, setTitle }) => {
+export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, setRandomNumber, addToLocalStorage, title, setTitle }) => {
     // estados
     const [intentos, setIntentos] = useState([])
-    const estilos = 'border border-blue-400 '
     const [finished, setFinished] = useState(false)
+    const estilos = 'border border-blue-400 '
 
 
     // randomNumber = Math.random() * 10
@@ -19,17 +19,22 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage,
     // funciones
     function clickHandler(e) {
         if (e === 'menu') {
+            setTitle('Picas y Fijas')
             setMainDisplay(e)
+            setTimeout(() => {
+                setTitle('Picas y Fijas')
+            }, 1500);
         }
         if (e === 'reseteo') {
+            setRandomNumber(calcRandonNumber())
             setTitle('Reiniciado ✔️')
+            setFinished(false)
+            setIntentos([])
+
+
             setTimeout(() => {
                 setTitle('A jugar! 🤔')
             }, 2000);
-            setTimeout(() => {
-                setTitle('Picas y Fijas')
-            }, 10000);
-            console.log('reseteo');
 
         }
     }
@@ -132,6 +137,13 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, addToLocalStorage,
         }
 
 
+    }
+
+
+
+    // EN CADA RENDER
+    if (title === 'Picas y Fijas') {
+        setTitle('A jugar! 🤔')
     }
 
 

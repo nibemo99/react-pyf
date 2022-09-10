@@ -14,6 +14,7 @@ function App() {
   // useStatesss
   const [mainDisplay, setMainDisplay] = useState('menu')
   const [title, setTitle] = useState('Picas y Fijas')
+  const [randomNumber, setRandomNumber] = useState(0)
 
   // funcionesss
   function addToLocalStorage(e, date, status) {
@@ -27,17 +28,25 @@ function App() {
     localStorage.historial = JSON.stringify(temp)
     console.log('recien lo guarde', JSON.parse(localStorage.historial));
   }
-  console.log('render de app.js');
+  function calcRandonNumber() {
+    let temp = 0
+    while (!temp) {
+      temp++
+      temp = `${Math.trunc((Math.random() * 10000))}`
+      temp =
+        (temp.length === 4) &&
+        (temp[0] !== temp[1]) &&
+        (temp[0] !== temp[2]) &&
+        (temp[0] !== temp[3]) &&
+        (temp[1] !== temp[2]) &&
+        (temp[1] !== temp[3]) &&
+        (temp[2] !== temp[3]) && temp
+    }
+    return temp
 
-  //calculando el random number
-  let randomNumber = 0
-  let temp = 0
-  
+  }
 
-  if(title === 'Picas y Fijas')
-
-  console.log('random number set', randomNumber);
-
+  // EN CADA RENDER ↓
 
 
   return (
@@ -56,15 +65,20 @@ function App() {
           {/* aqui se renderizan los botones o lo que sea */}
           {(mainDisplay === 'menu') &&
             <MenuScreen
+              calcRandonNumber={calcRandonNumber}
+              setRandomNumber={setRandomNumber}
               setMainDisplay={setMainDisplay}
             />}
 
           {(mainDisplay === 'play') &&
             <PlayingScreen
               setMainDisplay={setMainDisplay}
-              randomNumber={randomNumber}
               addToLocalStorage={addToLocalStorage}
+              title={title}
               setTitle={setTitle}
+              randomNumber={randomNumber}
+              calcRandonNumber={calcRandonNumber}
+              setRandomNumber={setRandomNumber}
             />}
 
           {(mainDisplay === 'hist') &&

@@ -1,13 +1,14 @@
 import React from 'react'
 import './../Main.css'
 
-export const MenuScreen = ({ setMainDisplay }) => {
+export const MenuScreen = ({ setMainDisplay, calcRandonNumber, setRandomNumber }) => {
     // estados
     const estilos = 'w-2/3 py-4 border  border-blue-400 hover:bg-blue-400 hover:text-white hover:scale-105 ease-out duration-500'
 
 
     // funciones
     const clickHandler = (e) => {
+        setRandomNumber(calcRandonNumber)
         setMainDisplay(e)
     }
 
