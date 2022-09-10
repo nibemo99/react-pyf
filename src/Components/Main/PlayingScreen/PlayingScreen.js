@@ -22,6 +22,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
             setTitle('Picas y Fijas')
             setMainDisplay(e)
             setTimeout(() => {
+                console.log('epa');
                 setTitle('Picas y Fijas')
             }, 1500);
         }
@@ -31,7 +32,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
             setFinished(false)
             setIntentos([])
 
-
+            console.log(randomNumber);
             setTimeout(() => {
                 setTitle('A jugar! 🤔')
             }, 2000);
@@ -142,10 +143,6 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
 
 
     // EN CADA RENDER
-    if (title === 'Picas y Fijas') {
-        setTitle('A jugar! 🤔')
-    }
-
 
     return (
         <div className='border border-black w-4/5 mx-auto py-4 '>

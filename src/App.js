@@ -68,6 +68,7 @@ function App() {
               calcRandonNumber={calcRandonNumber}
               setRandomNumber={setRandomNumber}
               setMainDisplay={setMainDisplay}
+              setTitle={setTitle}
             />}
 
           {(mainDisplay === 'play') &&
