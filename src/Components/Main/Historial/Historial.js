@@ -21,12 +21,22 @@ export const Historial = ({ setMainDisplay }) => {
 
       <button onClick={clickHandler} className='border-blue-400' >Regresar</button>
 
+
+      {/* SI RENDERLISTA === 0, renderiza toda la lista */}
       {(renderLista === 0) && (
         <div className='flex flex-col'>
 
           {
             JSON.parse(localStorage.historial).map((element, index) => {
-              return <button key={index} id={index} onClick={(e) => { setRenderLista(e.target.attributes.id.nodeValue); }} >{element.date}</button>
+              return (
+                <button
+                  key={index}
+                  id={index}
+                  onClick={(e) => { setRenderLista(e.target.attributes.id.nodeValue); }}
+                >
+                  {element.date}
+                </button>
+              )
 
             })
           }
@@ -37,6 +47,7 @@ export const Historial = ({ setMainDisplay }) => {
         </div>
       )}
 
+      {/* SI RENDERLISTA !== 0, renderiza el item con index === RENDERLISTA */}
       {(renderLista !== 0) && (
         <div>
           <h1>Esta es la partida # : {renderLista}</h1>
