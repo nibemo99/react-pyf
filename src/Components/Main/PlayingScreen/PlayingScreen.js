@@ -150,7 +150,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
             <div id='botonera' className='flex gap-3 justify-center mb-4'>
                 <button
                     onClick={() => clickHandler('reseteo')}
-                    className={` shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105 ${(finished) ? 'animate-bounce shadow-lg' : 'shadow-sm'}`}
+                    className={` shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105 ${(finished) ? 'animate-wiggle shadow-lg' : 'shadow-sm'} `}
                 >Reiniciar</button>
                 <button
                     onClick={() => clickHandler('menu')}
