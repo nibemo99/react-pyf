@@ -159,6 +159,11 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
                 <span onClick={() => console.log(randomNumber)} className='shadow-sm shadow-blue-700 w-1/4 mx-2  ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md ' >Ronda: {intentos.length}</span>
 
             </div>
+            <div className='grid grid-cols-3 w-3/5 mx-auto bg-blue-300 my-1 text-lg'>
+                <p>Picas</p>
+                <p>Número</p>
+                <p>Fijas</p>
+            </div>
 
             <Intentos>
                 <div className='max-h-[370px] overflow-auto '>
@@ -170,7 +175,15 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
 
                 </div>
             </Intentos>
-            {(!finished) && (<input type='number' onKeyUp={inputHandler} onChange={validarInput} />)}
+            {(!finished) && (
+                <input
+                    type='number'
+                    onKeyUp={inputHandler}
+                    onChange={validarInput}
+                    className='text-center py-1 mt-3 w-2/5'
+                    placeholder='Escribe aquí'
+                />
+            )}
             {(finished) && (<span>Lo encontraste</span>)}
 
 
