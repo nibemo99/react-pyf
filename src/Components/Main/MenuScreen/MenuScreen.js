@@ -10,7 +10,7 @@ export const MenuScreen = ({ setMainDisplay, calcRandonNumber, setRandomNumber, 
     const clickHandler = (e) => {
         if (e === 'play') {
             setRandomNumber(calcRandonNumber)
-            setTitle('A jugar! 🤔')
+            setTitle('A jugar! ⌛')
         }
         setMainDisplay(e)
     }

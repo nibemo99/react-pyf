@@ -35,7 +35,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
 
             console.log(randomNumber);
             setTimeout(() => {
-                setTitle('A jugar! 🤔')
+                setTitle('A jugar! ⌛')
             }, 2000);
 
         }
@@ -184,7 +184,17 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
                     placeholder='Escribe aquí'
                 />
             )}
-            {(finished) && (<span>Lo encontraste</span>)}
+            {(finished) && (
+                <>
+                    <p className='text-2xl py-4'>¡Excelente investigación!</p>
+                    <p className='text-xl'>Tu número es: {randomNumber}</p>
+                    <img
+                        alt='you made it :)'
+                        src='https://c.tenor.com/iWw4l4A9TZsAAAAC/the-hangover-zach-galifianakis.gif'
+                        className='mx-auto mt-5'
+                    />
+                </>
+            )}
 
 
 
