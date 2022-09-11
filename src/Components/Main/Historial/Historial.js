@@ -52,6 +52,15 @@ export const Historial = ({ setMainDisplay }) => {
         <div className='flex flex-col'>
 
           {
+            (parsedHistory.length === 0) && (
+              <>
+                <p className='mx-auto w-2/3 py-3' >¡Ups!</p>
+                <p className='mx-auto w-2/3 py-3' >No tienes historial de partidas por el momento</p>
+              </>
+            )
+          }
+
+          {
             // Traigo el localstorage y lo mapeo para renderizar cada uno de las partidas.
             parsedHistory.map((element, index) => {
               return (
