@@ -106,7 +106,10 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
         let picas = 0
         let fijas = 0
         for (let i = 0; i < 4; i++) {
-            if (e[i] === randomNumber[i]) { fijas++; console.log(e[i], 'es fija'); }
+            if (e[i] === randomNumber[i]) {
+                fijas++;
+                // console.log(e[i], 'es fija');
+            }
         }
         // console.log(e, randomNumber);
         for (let i = 0; i < randomNumber.length; i++) {

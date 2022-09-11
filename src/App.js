@@ -26,7 +26,7 @@ function App() {
       completed: status,
     })
     localStorage.historial = JSON.stringify(temp)
-    console.log('recien lo guarde', JSON.parse(localStorage.historial));
+    // console.log('recien lo guarde', JSON.parse(localStorage.historial));
   }
   function calcRandonNumber() {
     let temp = 0
