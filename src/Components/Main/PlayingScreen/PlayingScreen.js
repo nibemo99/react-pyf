@@ -150,7 +150,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
             <div id='botonera' className='flex gap-3 justify-center mb-4'>
                 <button
                     onClick={() => clickHandler('reseteo')}
-                    className='shadow-sm shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
+                    className={` shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105 ${(finished) ? 'animate-bounce shadow-lg' : 'shadow-sm'}`}
                 >Reiniciar</button>
                 <button
                     onClick={() => clickHandler('menu')}
@@ -187,7 +187,11 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
             {(finished) && (
                 <>
                     <p className='text-2xl py-4'>¡Excelente investigación!</p>
-                    <p className='text-xl'>Tu número es: {randomNumber}</p>
+                    <p className='text-xl'>Tu número es: 
+                        <span className='pl-2 text-red-600'>
+                             {randomNumber}
+                        </span>
+                    </p>
                     <img
                         alt='you made it :)'
                         src='https://c.tenor.com/iWw4l4A9TZsAAAAC/the-hangover-zach-galifianakis.gif'
