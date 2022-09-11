@@ -54,11 +54,10 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
             }
 
             (!!!intentos[intentos.length - 1])
-                ? validarResultado(e.target.value)
+                ? validarResultado(e.target.value, e)
                 : (intentos[intentos.length - 1].numero === e.target.value)
                     ? avisoRevisarInput('same')
-                    : validarResultado(e.target.value)
-
+                    : validarResultado(e.target.value, e)
         }
     }
     function bringDate() {
@@ -102,7 +101,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
     function avisoRevisarInput(e) {
         console.log(`revisa: ${e}`);
     }
-    function validarResultado(e) {
+    function validarResultado(e, evento) {
         // console.log(e, typeof (e));
         let picas = 0
         let fijas = 0
@@ -124,6 +123,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
 
         let temp = { numero: e, picas: `${picas}`, fijas: `${fijas}` }
         setIntentos([temp, ...intentos])
+        evento.target.value = ''
 
         if (fijas === 4) {
             let date = bringDate()
