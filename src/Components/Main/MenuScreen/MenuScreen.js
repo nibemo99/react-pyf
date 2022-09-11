@@ -24,7 +24,7 @@ export const MenuScreen = ({ setMainDisplay, calcRandonNumber, setRandomNumber, 
             
             >Nuevo juego</button>
             <button onClick={() => clickHandler('hist')} className={estilos} >Historial</button>
-            <button disabled onClick={() => clickHandler('howto')} className={estilos} >Como jugar</button>
+            {/* <button disabled onClick={() => clickHandler('howto')} className={estilos} >Como jugar</button> */}
         </div>
     )
 }
