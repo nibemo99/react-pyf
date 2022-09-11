@@ -9,8 +9,9 @@ import { Intentos } from './Intentos'
 export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, setRandomNumber, addToLocalStorage, title, setTitle }) => {
     // estados
     const [intentos, setIntentos] = useState([])
+    // const [intentos, setIntentos] = useState([{ "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1235", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "1238", "picas": "2", "fijas": "0" }, { "numero": "1239", "picas": "2", "fijas": "0" }, { "numero": "1230", "picas": "1", "fijas": "0" }, { "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "1238", "picas": "2", "fijas": "0" }, { "numero": "1239", "picas": "2", "fijas": "0" }, { "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1235", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "7892", "picas": "0", "fijas": "4" }])
     const [finished, setFinished] = useState(false)
-    const estilos = 'border border-blue-400 '
+    // const estilos = 'border border-blue-400 '
 
 
     // randomNumber = Math.random() * 10
@@ -122,11 +123,11 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
 
 
         let temp = { numero: e, picas: `${picas}`, fijas: `${fijas}` }
-        setIntentos([...intentos, temp])
+        setIntentos([temp, ...intentos])
 
         if (fijas === 4) {
             let date = bringDate()
-            addToLocalStorage([...intentos, temp], date, true)
+            addToLocalStorage([temp, ...intentos], date, true)
             setTitle('Felicidades!')
             setFinished(true)
             setTimeout(() => {
@@ -146,25 +147,28 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
 
     return (
         <div className='border border-black w-4/5 mx-auto py-4 '>
-            <div id='botonera' className='flex gap-8 justify-center'>
+            <div id='botonera' className='flex gap-3 justify-center mb-4'>
                 <button
                     onClick={() => clickHandler('reseteo')}
-                    className={estilos}
+                    className='shadow-sm shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
                 >Reiniciar</button>
                 <button
                     onClick={() => clickHandler('menu')}
-                    className={estilos}
+                    className='shadow-sm shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
                 >Regresar</button>
-                <span onClick={() => console.log(randomNumber)} className={estilos} >{intentos.length}</span>
+                <span onClick={() => console.log(randomNumber)} className='shadow-sm shadow-blue-700 w-1/4 mx-2  ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md ' >Ronda: {intentos.length}</span>
 
             </div>
 
             <Intentos>
-                {
-                    intentos.map((element, index) => {
-                        return <Intento key={index} element={element} />
-                    })
-                }
+                <div className='max-h-[370px] overflow-auto '>
+                    {
+                        intentos.map((element, index) => {
+                            return <Intento key={index} element={element} />
+                        })
+                    }
+
+                </div>
             </Intentos>
             {(!finished) && (<input type='number' onKeyUp={inputHandler} onChange={validarInput} />)}
             {(finished) && (<span>Lo encontraste</span>)}
