@@ -42,11 +42,14 @@ export const Historial = ({ setMainDisplay }) => {
                 >
 
                   <p
-                    className=''
-                  >{element.data[element.data.length - 1].numero}</p>
-                  <div className='flex flex-col gap-1 justify-between'>
+                    className='text-2xl tracking-widest hover:scale-110 ease-in-out duration-500 w-fit mx-auto'
 
-                    {element.date}
+                  >
+                    {element.data[element.data.length - 1].numero}
+                  </p>
+
+                  <div className='flex flex-col gap-1 justify-between'>
+                    <p className='text-gray-500 hover:text-blue-700 ease-in-out duration-500' >{element.date}</p>
                     <p>Rondas: {element.data.length}</p>
                   </div>
                 </button>
