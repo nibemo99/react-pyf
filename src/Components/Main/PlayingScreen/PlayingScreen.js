@@ -188,7 +188,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
                 <>
                     <p className='text-2xl py-4'>¡Excelente investigación!</p>
                     <p className='text-xl'>Tu número es: 
-                        <span className='pl-2 text-red-600'>
+                        <span className='pl-2 animate-colorChange'>
                              {randomNumber}
                         </span>
                     </p>

@@ -14,10 +14,19 @@ module.exports = {
             transform: 'rotate(3deg)',
           }
 
+        },
+        colorChange: {
+          '0%, 100%': { color: 'red' },
+          '20%': { color: 'blue' },
+          '40%': { color: 'green' },
+          '60%': { color: 'gray' },
+          '80%': { color: 'orange' },
+
         }
       },
       animation: {
         wiggle: 'wiggleh 1s ease-in-out infinite',
+        colorChange: 'colorChange 1s ease-in-out infinite'
       }
     },
   },
