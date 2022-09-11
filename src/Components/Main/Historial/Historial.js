@@ -38,7 +38,7 @@ export const Historial = ({ setMainDisplay }) => {
 
   return (
 
-    <div className=' w-4/5 mx-auto mb-10 flex flex-col h-[450px] overflow-auto '>
+    <div className=' w-4/5 mx-auto mb-10 flex flex-col h-[450px] overflow-auto no-scrollbar'>
 
       <button
         onClick={clickHandler}

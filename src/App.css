@@ -10,7 +10,6 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 0.4s linear;
-    
   }
 }
 @keyframes App-logo-spin {
@@ -36,4 +35,12 @@
 .App-link {
   color: #61dafb;
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
