@@ -38,7 +38,7 @@ export const Historial = ({ setMainDisplay }) => {
 
   return (
 
-    <div className=' w-4/5 mx-auto mb-10 flex flex-col h-[450px] '>
+    <div className=' w-4/5 mx-auto mb-10 flex flex-col h-[450px] overflow-auto '>
 
       <button
         onClick={clickHandler}
@@ -100,7 +100,7 @@ export const Historial = ({ setMainDisplay }) => {
             <h1>Rondas: {parsedHistory[renderLista - 1].data.length}</h1>
           </div>
 
-          <div className='my-4 max-h-[275px] overflow-auto grid grid-cols-3 mx-auto w-3/5'>
+          <div className='my-4 max-h-[275px] overflow-auto grid grid-cols-3 mx-auto w-3/5 pb-2'>
             {/* Espacio para renderizar las rondas: */}
 
             <p className='bg-blue-200 text-lg'>Picas</p>
@@ -110,11 +110,11 @@ export const Historial = ({ setMainDisplay }) => {
             {
 
 
-              parsedHistory[renderLista - 1].data.map(e => {
+              parsedHistory[renderLista - 1].data.map((e, i, a) => {
                 return (
                   <>
                     <p className='py-[2px]' key={`${e.picas}p`}>{e.picas}</p>
-                    <p className='py-[2px]' key={`${e.numero}n`}>{e.numero}</p>
+                    <p className={`py-[2px] ${(i === a.length - 1) ? 'animate-colorChange' : ''}`} key={`${e.numero}n`}>{e.numero}</p>
                     <p className='py-[2px]' key={`${e.fijas}f`}>{e.fijas}</p>
                   </>
                 )

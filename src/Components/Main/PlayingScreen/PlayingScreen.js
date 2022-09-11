@@ -180,7 +180,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
                     type='number'
                     onKeyUp={inputHandler}
                     onChange={validarInput}
-                    className='text-center py-1 my-3 w-2/5'
+                    className='text-center py-1 my-3 w-2/5 focus:scale-105 ease-out duration-300'
                     placeholder='Escribe aquí'
                 />
             )}

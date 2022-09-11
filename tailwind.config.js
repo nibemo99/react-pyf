@@ -16,9 +16,9 @@ module.exports = {
 
         },
         colorChange: {
-          '0%, 100%': { color: 'red' },
+          '0%, 100%': { color: 'red', transform: 'rotate(-3deg)', },
           '20%': { color: 'blue' },
-          '40%': { color: 'green' },
+          '40%': { color: 'green', transform: 'rotate(3deg)', },
           '60%': { color: 'gray' },
           '80%': { color: 'orange' },
 
