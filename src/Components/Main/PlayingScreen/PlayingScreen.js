@@ -122,12 +122,12 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
 
 
         let temp = { numero: e, picas: `${picas}`, fijas: `${fijas}` }
-        setIntentos([temp, ...intentos])
+        setIntentos([...intentos, temp])
         evento.target.value = ''
 
         if (fijas === 4) {
             let date = bringDate()
-            addToLocalStorage([temp, ...intentos], date, true)
+            addToLocalStorage([...intentos, temp,], date, true)
             setTitle('Felicidades!')
             setFinished(true)
             setTimeout(() => {

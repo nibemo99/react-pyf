@@ -72,7 +72,7 @@ export const Historial = ({ setMainDisplay }) => {
 
                   <p className='text-2xl tracking-widest hover:scale-110 ease-in-out duration-500 w-fit mx-auto'
                   >
-                    {element.data[0].numero}
+                    {element.data[element.data.length - 1].numero}
                   </p>
 
                   <div className='flex flex-col gap-1 justify-between'>
