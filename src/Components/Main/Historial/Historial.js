@@ -10,7 +10,7 @@ export const Historial = ({ setMainDisplay }) => {
 
   // funciones
   function clickHandler() {
-    setMainDisplay('menu')
+    setMainDisplay('howto')
   }
   function eliminarRegistro(event) {
     let textoBoton = event.target.innerText
