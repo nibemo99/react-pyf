@@ -15,7 +15,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
 
 
     // randomNumber = Math.random() * 10
-    console.log('render de playingscreen', randomNumber);
+    // console.log('render de playingscreen', randomNumber);
 
     // funciones
     function clickHandler(e) {
@@ -23,7 +23,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
             setTitle('Picas y Fijas')
             setMainDisplay(e)
             setTimeout(() => {
-                console.log('epa');
+                // console.log('epa');
                 setTitle('Picas y Fijas')
             }, 1500);
         }
@@ -33,7 +33,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
             setFinished(false)
             setIntentos([])
 
-            console.log(randomNumber);
+            // console.log(randomNumber);
             setTimeout(() => {
                 setTitle('A jugar! ⌛')
             }, 2000);
@@ -99,7 +99,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
         }
     }
     function avisoRevisarInput(e) {
-        console.log(`revisa: ${e}`);
+        // console.log(`revisa: ${e}`);
     }
     function validarResultado(e, evento) {
         // console.log(e, typeof (e));
@@ -108,13 +108,13 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
         for (let i = 0; i < 4; i++) {
             if (e[i] === randomNumber[i]) { fijas++; console.log(e[i], 'es fija'); }
         }
-        console.log(e, randomNumber);
+        // console.log(e, randomNumber);
         for (let i = 0; i < randomNumber.length; i++) {
             for (let j = 0; j < e.length; j++) {
                 if (i !== j) {
                     if (randomNumber[i] === e[j]) {
                         picas++
-                        console.log(i, ' es igual a ', j);
+                        // console.log(i, ' es igual a ', j);
                     }
                 }
             }
@@ -156,7 +156,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
                     onClick={() => clickHandler('menu')}
                     className='shadow-sm shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
                 >Regresar</button>
-                <span onClick={() => console.log(randomNumber)} className='shadow-sm shadow-blue-700 w-1/4 mx-2  ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md ' >Ronda: {intentos.length}</span>
+                <span className='shadow-sm shadow-blue-700 w-1/4 mx-2  ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md ' >Ronda: {intentos.length}</span>
 
             </div>
             <div className='grid grid-cols-3 w-3/5 mx-auto bg-blue-300 my-1 text-lg'>
@@ -187,9 +187,9 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
             {(finished) && (
                 <>
                     <p className='text-2xl py-4'>¡Excelente investigación!</p>
-                    <p className='text-xl'>Tu número es: 
+                    <p className='text-xl'>Tu número es:
                         <span className='pl-2 animate-colorChange'>
-                             {randomNumber}
+                            {randomNumber}
                         </span>
                     </p>
                     <img
