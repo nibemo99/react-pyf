@@ -62,7 +62,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
     }
     function bringDate() {
         let x = new Date()
-        return x.toTimeString()
+        return x.toDateString()
     }
     function validarInput(e) {
         let input = e.target.value
