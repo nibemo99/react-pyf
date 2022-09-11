@@ -38,7 +38,7 @@ export const Historial = ({ setMainDisplay }) => {
 
   return (
 
-    <div className=' w-4/5 mx-auto mb-10 flex flex-col h-[450px] overflow-auto no-scrollbar'>
+    <div className={` w-4/5 mx-auto mb-10 flex flex-col overflow-auto no-scrollbar ${(renderLista === 0) ? 'h-[450px]' : ''}`}>
 
       <button
         onClick={clickHandler}
@@ -93,14 +93,14 @@ export const Historial = ({ setMainDisplay }) => {
 
       {/* SI RENDERLISTA !== 0, renderiza el item con index === RENDERLISTA */}
       {(renderLista !== 0) && (
-        <div>
+        <div className='py-1'>
 
           <div className='grid grid-cols-2'>
             <h1>{parsedHistory[renderLista - 1].date}</h1>
             <h1>Rondas: {parsedHistory[renderLista - 1].data.length}</h1>
           </div>
 
-          <div className='my-4 max-h-[275px] overflow-auto grid grid-cols-3 mx-auto w-3/5 pb-2'>
+          <div className='my-4  grid grid-cols-3 mx-auto w-3/5 pb-2'>
             {/* Espacio para renderizar las rondas: */}
 
             <p className='bg-blue-200 text-lg'>Picas</p>
