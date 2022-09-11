@@ -9,7 +9,7 @@ import { Intentos } from './Intentos'
 export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, setRandomNumber, addToLocalStorage, title, setTitle }) => {
     // estados
     const [intentos, setIntentos] = useState([])
-    // const [intentos, setIntentos] = useState([{ "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1235", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "1238", "picas": "2", "fijas": "0" }, { "numero": "1239", "picas": "2", "fijas": "0" }, { "numero": "1230", "picas": "1", "fijas": "0" }, { "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "1238", "picas": "2", "fijas": "0" }, { "numero": "1239", "picas": "2", "fijas": "0" }, { "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1235", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "7892", "picas": "0", "fijas": "4" }])
+    // const [intentos, setIntentos] = us eState([{ "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1235", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "1238", "picas": "2", "fijas": "0" }, { "numero": "1239", "picas": "2", "fijas": "0" }, { "numero": "1230", "picas": "1", "fijas": "0" }, { "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "1238", "picas": "2", "fijas": "0" }, { "numero": "1239", "picas": "2", "fijas": "0" }, { "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1235", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "7892", "picas": "0", "fijas": "4" }])
     const [finished, setFinished] = useState(false)
     // const estilos = 'border border-blue-400 '
 
@@ -146,7 +146,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
     // EN CADA RENDER
 
     return (
-        <div className='border border-black w-4/5 mx-auto py-4 '>
+        <div className='w-4/5 mx-auto py-4 mb-8'>
             <div id='botonera' className='flex gap-3 justify-center mb-4'>
                 <button
                     onClick={() => clickHandler('reseteo')}
@@ -166,7 +166,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
             </div>
 
             <Intentos>
-                <div className='max-h-[370px] overflow-auto '>
+                <div className=' '>
                     {
                         intentos.map((element, index) => {
                             return <Intento key={index} element={element} />
