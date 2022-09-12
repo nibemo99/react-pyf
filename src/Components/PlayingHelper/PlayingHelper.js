@@ -1,17 +1,34 @@
 import React, { useState } from 'react'
 
-export const PlayingHelper = ({ intentos, setMainDisplay, setTitle, setFinished }) => {
+export const PlayingHelper = ({ intentos, setMainDisplay, setTitle, finished, setFinished }) => {
     // USESTATES
     const [flag, setFlag] = useState(0)
 
 
     // Con cada render
-    if (intentos.length === 1 && !flag) {
-        setTimeout(() => {
-            setFlag(!flag)
-            console.log('pase aqui');
-        }, 6000);
+
+    if (intentos.length > 2 && flag === 1) {
+        setFlag(1000)
     }
+
+    // console.log(finished);
+    if (flag === 0) {
+        setTimeout(() => {
+            setFlag(1)
+        }, 3000);
+    }
+    if (intentos.length >= 1 && flag === 1000) {
+        setTimeout(() => {
+            setFlag(2)
+        }, 10000);
+    }
+    if (intentos.length >= 1 && flag === 2) {
+        setFlag(3)
+        setTimeout(() => {
+            setFlag(1000)
+        }, 10000);
+    }
+
 
     return (
         <>
@@ -27,47 +44,43 @@ export const PlayingHelper = ({ intentos, setMainDisplay, setTitle, setFinished 
                     </button>
                 )}
 
-                {(intentos.length === 1) && (
+
+
+
+
+                {(intentos.length !== 0) && (
                     <>
-                        {(flag) ? (
+
+                        {(flag === 1) ? (
                             <div
                                 className='animate-bounceDelayed absolute top-[-30px] left-[-20px] w-36 text-center text-sm'
                             >
-                                Presiona para pista
+                                Presiona para pistas
                             </div>
                         )
-                            : ('dddd')
+                            : ('')
                         }
-
                         <button
-                            onClick={() => { setFinished('esta es pica') }}
+                            onClick={() => {
+                                if (flag >= 1 && finished[0] !== 1) {
+
+                                    console.log(finished);
+                                    setFinished([0, finished[2], finished[2]])
+                                    setFlag(1000)
+
+                                }
+                            }}
+                            className={`w-full ${(flag === 3) ? 'animate-wiggle' : ''}`}
                         >
                             Ronda: {intentos.length}
                         </button>
                     </>
                 )}
 
-                {(intentos.length === 2) && (
-                    <>
-                        {/* {(flag) && (
-                            <div
-                                className='animate-wiggle absolute top-[-30px] left-[-20px] w-36 text-center text-sm'
-                            >
-                                Presiona para pista
-                            </div>
-                        )} */}
 
-                        <div>
-                            Ronda: {intentos.length}
-                        </div>
-                    </>
-                )}
 
-                {(intentos.length === 3) && (
-                    <div>
-                        okaydfasdf
-                    </div>
-                )}
+
+
 
             </span>
 

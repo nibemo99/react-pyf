@@ -11,7 +11,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
     // estados
     const [intentos, setIntentos] = useState([])
     // const [intentos, setIntentos] = us eState([{ "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1235", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "1238", "picas": "2", "fijas": "0" }, { "numero": "1239", "picas": "2", "fijas": "0" }, { "numero": "1230", "picas": "1", "fijas": "0" }, { "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "1238", "picas": "2", "fijas": "0" }, { "numero": "1239", "picas": "2", "fijas": "0" }, { "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1235", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "7892", "picas": "0", "fijas": "4" }])
-    const [finished, setFinished] = useState([0, 'inicio'])
+    const [finished, setFinished] = useState([0, 'Intenta 1234'])
     // const estilos = 'border border-blue-400 '
 
 
@@ -31,7 +31,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
         if (e === 'reseteo') {
             setRandomNumber(calcRandonNumber())
             setTitle('Reiniciado ✔️')
-            setFinished([0, 'epa'])
+            setFinished([0, 'Intenta 1234'])
             setIntentos([])
 
             // console.log(randomNumber);
@@ -106,23 +106,37 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
         // console.log(e, typeof (e));
         let picas = 0
         let fijas = 0
+        let pista = `Descarta ${e}`
         for (let i = 0; i < 4; i++) {
             if (e[i] === randomNumber[i]) {
                 fijas++;
-                // console.log(e[i], 'es fija');
+                pista = `${e[i]} es fija`
             }
         }
+
+        console.log(pista);
+
         // console.log(e, randomNumber);
         for (let i = 0; i < randomNumber.length; i++) {
             for (let j = 0; j < e.length; j++) {
                 if (i !== j) {
                     if (randomNumber[i] === e[j]) {
                         picas++
+                        pista = `${e[j]} es pica`
                         // console.log(i, ' es igual a ', j);
                     }
                 }
             }
         }
+        console.log(pista);
+
+        if (intentos.length === 0) {
+            setFinished([0, 'Intenta 5678', pista])
+        }
+        if (intentos.length >= 1) {
+            setFinished([0, '', pista])
+        }
+
 
 
         let temp = { numero: e, picas: `${picas}`, fijas: `${fijas}` }
@@ -161,6 +175,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
                     className='shadow-sm shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
                 >Regresar</button>
                 <PlayingHelper
+                    finished={finished}
                     setFinished={setFinished}
                     setTitle={setTitle}
                     setMainDisplay={setMainDisplay}
@@ -190,7 +205,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
                     onKeyUp={inputHandler}
                     onChange={validarInput}
                     className='text-center py-1 my-3 w-2/5 focus:scale-105 ease-out duration-300'
-                    placeholder=''
+                    placeholder={finished[1]}
                 />
             ) : ''}
             {(finished[0]) ? (
