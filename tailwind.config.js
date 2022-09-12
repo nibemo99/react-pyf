@@ -47,7 +47,7 @@ module.exports = {
             'height':'52px',
           },
           '100%': {
-            'height':'300px',
+            'height':'320px',
           },
         },
         disminuirDiv: {

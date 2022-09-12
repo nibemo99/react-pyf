@@ -60,13 +60,11 @@ export const ComoJugar = ({ setMainDisplay }) => {
                     <div className='col-span-2 flex flex-col h-full'>
                         <button
                             onClick={() => setEstadoBoton('animate-disminuir')}
-                            className='col-span-2 w-1/2 mx-auto my-1 hover:scale-125 duration-100'
+                            className='col-span-2 w-1/2 mx-auto my-1 hover:scale-125 duration-100 text-gray-400 hover:text-gray-800'
                         >
 
-                            Return</button>
-                        <div>
-
-                        </div>
+                            Cerrar</button>
+                        <TutorialCarrousel />
                     </div>
                 )
                 }
