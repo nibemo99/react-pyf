@@ -54,8 +54,8 @@ export const Historial = ({ setMainDisplay }) => {
 
           {(parsedHistory.length === 0) && (
             <>
-              <p className='mx-auto w-2/3 py-3' >¡Ups!</p>
-              <p className='mx-auto w-2/3 py-3' >No tienes historial de partidas por el momento</p>
+              <p className='mx-auto w-2/3 py-3 animate-wiggle' >¡Ups!</p>
+              <p className='mx-auto w-2/3 py-3' >No tienes historial de partidas por el momento.</p>
             </>
           )}
 
