@@ -21,7 +21,7 @@ export const TutorialCarrousel = () => {
     // Variables
     let last = 12
 
-    
+
     return (
         <div className='grid grid-cols-10 justify-center items-center h-full relative' >
             {/* BOTON PARA MOVER A LA IZQ */}
@@ -102,7 +102,7 @@ export const TutorialCarrousel = () => {
                     <>
                         <p className='text-lg' >Miremos un ejemplo.</p>
                         <p className='text-base' >Número secreto:</p>
-                        <p className='text-lg font-bold hover:scale-125 duration-75 animate-wiggle' >9841</p>
+                        <p className='text-lg font-bold hover:scale-125 duration-75 animate-wiggle' >9641</p>
                         <p className='text-base' >Tu primer intento:</p>
                         <p className='text-lg font-bold hover:scale-125 duration-75 animate-wiggle' >1234</p>
 
@@ -117,7 +117,7 @@ export const TutorialCarrousel = () => {
                         <p className='text-base mt-1' >Sin embargo, en la posición incorrecta.</p>
                         <div>
                             <p className='text-base' >Número secreto:</p>
-                            <p className='text-lg font-bold hover:scale-125 duration-75' >98<span className='animate-colorChange' >41</span></p>
+                            <p className='text-lg font-bold hover:scale-125 duration-75' >96<span className='animate-colorChange' >41</span></p>
                             <p className='text-base' >Tu primer intento:</p>
                             <p className='text-lg font-bold hover:scale-125 duration-75 ' ><span className='animate-colorChange' >1</span>23<span className='animate-colorChange' >4</span></p>
                         </div>
@@ -140,9 +140,9 @@ export const TutorialCarrousel = () => {
                     <>
                         <p className='text-lg' >Continuando el ejemplo.</p>
                         <p className='text-base' >Número secreto:</p>
-                        <p className='text-lg font-bold hover:scale-125 duration-75 animate-wiggle' >9841</p>
+                        <p className='text-lg font-bold hover:scale-125 duration-75 animate-wiggle' >9641</p>
                         <p className='text-base' >Tu segundo intento:</p>
-                        <p className='text-lg font-bold hover:scale-125 duration-75 animate-wiggle' >5802</p>
+                        <p className='text-lg font-bold hover:scale-125 duration-75 animate-wiggle' >5678</p>
 
                     </>
                 )}
@@ -150,13 +150,13 @@ export const TutorialCarrousel = () => {
                 {/* pagina9 */}
                 {(tutPage === 8) && (
                     <div className='flex flex-col justify-evenly h-full' >
-                        <p className='text-xl' >¡Acertaste el 8!</p>
+                        <p className='text-xl' >¡Acertaste el 6!</p>
                         <p className='text-base mt-1' >¡Y en la posición correcta!</p>
                         <div>
                             <p className='text-base' >Número secreto:</p>
-                            <p className='text-lg font-bold hover:scale-125 duration-75' >9<span className='animate-colorChange' >8</span>41</p>
+                            <p className='text-lg font-bold hover:scale-125 duration-75' >9<span className='animate-colorChange' >6</span>41</p>
                             <p className='text-base' >Tu segundo intento:</p>
-                            <p className='text-lg font-bold hover:scale-125 duration-75 ' >5<span className='animate-colorChange' >8</span>02</p>
+                            <p className='text-lg font-bold hover:scale-125 duration-75 ' >5<span className='animate-colorChange' >6</span>78</p>
                         </div>
 
                     </div>
@@ -188,12 +188,13 @@ export const TutorialCarrousel = () => {
                                 <p>1234</p>
                                 <p>0</p>
                                 <p>0</p>
-                                <p>5802</p>
+                                <p>5678</p>
                                 <p>1</p>
                             </div>
                             <input
                                 type='number'
                                 className='text-center py-1 my-3 w-2/5 focus:scale-105 ease-out duration-300'
+                                onChange={(e) => { e.target.value = '' }}
                                 placeholder=''
                             />
                         </div>
@@ -206,9 +207,9 @@ export const TutorialCarrousel = () => {
                         <p className='text-xl' >¡Consigue 4 fijas para ganar!</p>
                         <div>
                             <p className='text-base' >Número secreto:</p>
-                            <p className='text-lg font-bold hover:scale-125 duration-75' ><span className='animate-colorChange' >9841</span></p>
+                            <p className='text-lg font-bold hover:scale-125 duration-75' ><span className='animate-colorChange' >9641</span></p>
                             <p className='text-base' >Intento #101:</p>
-                            <p className='text-lg font-bold hover:scale-125 duration-75 ' ><span className='animate-colorChange' >9841</span></p>
+                            <p className='text-lg font-bold hover:scale-125 duration-75 ' ><span className='animate-colorChange' >9641</span></p>
                         </div>
 
                     </div>
