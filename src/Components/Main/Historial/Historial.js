@@ -20,7 +20,7 @@ export const Historial = ({ setMainDisplay }) => {
     if (textoBoton === '¿Definitivo?') {
       parsedHistory.splice(renderLista - 1, 1)
       localStorage.historial = JSON.stringify(parsedHistory)
-      event.target.innerText = 'Eliminado!'
+      event.target.innerText = '¡Eliminado!'
       setTimeout(() => {
         setRenderLista(0)
       }, 1500);
