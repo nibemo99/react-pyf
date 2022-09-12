@@ -42,23 +42,27 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
         }
     }
     function inputHandler(e) {
+
+
         let ENTER_KEY = 13
+        let inputValue = document.querySelector('#input').value
         // si se presional enter
-        if (e.keyCode === ENTER_KEY) {
+        if (e.keyCode === ENTER_KEY || e.type === 'click') {
+
 
             // si la longitud es distinta de 4
-            if (e.target.value.length !== 4) return avisoRevisarInput('lenght')
+            if (inputValue.length !== 4) return avisoRevisarInput('lenght')
 
-            if (!e.target.value) {
-                e.target.value = ''
+            if (!inputValue) {
+                inputValue = ''
                 return avisoRevisarInput('undefined')
             }
 
             (!!!intentos[intentos.length - 1])
-                ? validarResultado(e.target.value, e)
-                : (intentos[intentos.length - 1].numero === e.target.value)
+                ? validarResultado(inputValue)
+                : (intentos[intentos.length - 1].numero === inputValue)
                     ? avisoRevisarInput('same')
-                    : validarResultado(e.target.value, e)
+                    : validarResultado(inputValue)
         }
     }
     function bringDate() {
@@ -102,7 +106,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
     function avisoRevisarInput(e) {
         // console.log(`revisa: ${e}`);
     }
-    function validarResultado(e, evento) {
+    function validarResultado(e) {
         // console.log(e, typeof (e));
         let picas = 0
         let fijas = 0
@@ -114,7 +118,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
             }
         }
 
-        console.log(pista);
+        // console.log(pista);
 
         // console.log(e, randomNumber);
         for (let i = 0; i < randomNumber.length; i++) {
@@ -128,7 +132,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
                 }
             }
         }
-        console.log(pista);
+        // console.log(pista);
 
         if (intentos.length === 0) {
             setFinished([0, 'Intenta 5678', pista])
@@ -141,7 +145,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
 
         let temp = { numero: e, picas: `${picas}`, fijas: `${fijas}` }
         setIntentos([...intentos, temp])
-        evento.target.value = ''
+        document.querySelector('#input').value = ''
 
         if (fijas === 4) {
             let date = bringDate()
@@ -200,13 +204,26 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
                 </div>
             </Intentos>
             {(!finished[0]) ? (
-                <input
-                    type='number'
-                    onKeyUp={inputHandler}
-                    onChange={validarInput}
-                    className='text-center py-1 my-3 w-2/5 focus:scale-105 ease-out duration-300'
-                    placeholder={finished[1]}
-                />
+                <div
+                    className='flex flex-col items-center justify-center'
+                >
+                    <input
+                        id='input'
+                        type='number'
+                        onKeyUp={inputHandler}
+                        onChange={validarInput}
+                        className='text-center py-1 my-3 w-2/5 focus:scale-105 ease-out duration-300'
+                        placeholder={finished[1]}
+                    />
+                    <button
+                        className='pl-3 '
+                        onClick={inputHandler}
+
+                    >Enviar<img alt=''
+                        src='https://cdn-icons-png.flaticon.com/512/271/271228.png'
+                        className=' inline h-4 ml-1 mb-[2px] rounded-full object-cover'
+                        /></button>
+                </div>
             ) : ''}
             {(finished[0]) ? (
                 <>

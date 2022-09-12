@@ -54,8 +54,7 @@ export const PlayingHelper = ({ intentos, setMainDisplay, setTitle, finished, se
                         {(flag === 1) ? (
                             <div
                                 className='animate-bounceDelayed absolute top-[-30px] left-[-20px] w-36 text-center text-sm'
-                            >
-                                Presiona para pistas
+                            >Presiona para pistas
                             </div>
                         )
                             : ('')
@@ -63,24 +62,15 @@ export const PlayingHelper = ({ intentos, setMainDisplay, setTitle, finished, se
                         <button
                             onClick={() => {
                                 if (flag >= 1 && finished[0] !== 1) {
-
-                                    console.log(finished);
                                     setFinished([0, finished[2], finished[2]])
                                     setFlag(1000)
-
                                 }
                             }}
                             className={`w-full ${(flag === 3) ? 'animate-wiggle' : ''}`}
-                        >
-                            Ronda: {intentos.length}
+                        >Ronda: {intentos.length}
                         </button>
                     </>
                 )}
-
-
-
-
-
 
             </span>
 
