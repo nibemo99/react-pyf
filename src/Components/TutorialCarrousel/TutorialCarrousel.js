@@ -35,9 +35,7 @@ export const TutorialCarrousel = () => {
                 {/* pagina1 */}
                 {(tutPage === 0) && (
                     <>
-
                         <p className='text-xl' >Voy a pensar un número...</p>
-
                         <img
                             alt=''
                             src='https://media.giphy.com/media/3o72F1FXi8MxXbyIjS/giphy.gif'
@@ -49,31 +47,39 @@ export const TutorialCarrousel = () => {
                 {/* pagina2 */}
                 {(tutPage === 1) && (
                     <>
-
                         <p className='text-lg' >El número no será complicado:</p>
-
                         <img
                             alt=''
                             src='https://i.imgur.com/70hiKtR.png'
                             className='w-2/3 mx-auto'
                         />
                         <p className='text-xl' >4 dígitos y sin repetir.</p>
-
                     </>
                 )}
+
                 {/* pagina3 */}
                 {(tutPage === 2) && (
                     <>
-
-                        <p className='text-lg' >Pero, ¿cómo lo vas a adivinar?</p>
-
+                        <p className='text-lg' >Pero, </p>
                         <img
                             alt=''
-                            src='https://i.imgur.com/70hiKtR.png'
-                            className='w-2/3 mx-auto'
+                            src='https://media.giphy.com/media/kPtv3UIPrv36cjxqLs/giphy.gif'
+                            className='w-5/6 mx-auto'
                         />
-                        <p className='text-xl' >4 dígitos y sin repetir.</p>
+                        <p className='text-xl' >¿Cómo lo vas a adivinar?</p>
+                    </>
+                )}
 
+                {/* pagina4 */}
+                {(tutPage === 3) && (
+                    <>
+                        <p className='text-lg' >En cada ronda envías tu intento </p>
+                        <img
+                            alt=''
+                            src='https://media.giphy.com/media/Y3MckoFQyMEcXrclSR/giphy.gif'
+                            className='w-5/6 mx-auto'
+                        />
+                        <p className='text-xl' >Y te doy <span className='animate-colorChange' >pistas</span></p>
                     </>
                 )}
 
