@@ -36,7 +36,7 @@ export const PlayingHelper = ({ intentos, setMainDisplay, setTitle, setFinished 
                                 Presiona para pista
                             </div>
                         )
-                            : ('')
+                            : ('dddd')
                         }
 
                         <button
@@ -49,13 +49,13 @@ export const PlayingHelper = ({ intentos, setMainDisplay, setTitle, setFinished 
 
                 {(intentos.length === 2) && (
                     <>
-                        {(flag) && (
+                        {/* {(flag) && (
                             <div
                                 className='animate-wiggle absolute top-[-30px] left-[-20px] w-36 text-center text-sm'
                             >
                                 Presiona para pista
                             </div>
-                        )}
+                        )} */}
 
                         <div>
                             Ronda: {intentos.length}

@@ -184,7 +184,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
 
                 </div>
             </Intentos>
-            {(!finished[0]) && (
+            {(!finished[0]) ? (
                 <input
                     type='number'
                     onKeyUp={inputHandler}
@@ -192,8 +192,8 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
                     className='text-center py-1 my-3 w-2/5 focus:scale-105 ease-out duration-300'
                     placeholder=''
                 />
-            )}
-            {(finished[0]) && (
+            ) : ''}
+            {(finished[0]) ? (
                 <>
                     <p className='text-2xl py-4'>¡Excelente investigación!</p>
                     <p className='text-xl'>Tu número es:
@@ -207,7 +207,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
                         className='mx-auto mt-5'
                     />
                 </>
-            )}
+            ) : ''}
 
 
 
