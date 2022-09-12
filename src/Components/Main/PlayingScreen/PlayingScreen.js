@@ -10,13 +10,7 @@ import { Intentos } from './Intentos'
 export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, setRandomNumber, addToLocalStorage, title, setTitle }) => {
     // estados
     const [intentos, setIntentos] = useState([])
-    // const [intentos, setIntentos] = us eState([{ "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1235", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "1238", "picas": "2", "fijas": "0" }, { "numero": "1239", "picas": "2", "fijas": "0" }, { "numero": "1230", "picas": "1", "fijas": "0" }, { "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "1238", "picas": "2", "fijas": "0" }, { "numero": "1239", "picas": "2", "fijas": "0" }, { "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1235", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "7892", "picas": "0", "fijas": "4" }])
     const [finished, setFinished] = useState([0, 'Intenta 1234'])
-    // const estilos = 'border border-blue-400 '
-
-
-    // randomNumber = Math.random() * 10
-    // console.log('render de playingscreen', randomNumber);
 
     // funciones
     function clickHandler(e) {
@@ -166,6 +160,10 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
 
 
     // EN CADA RENDER
+    if (title !== 'A jugar! ⌛') {
+        setTitle('A jugar! ⌛')
+        
+    }
 
     return (
         <div className='w-4/5 mx-auto py-4 mb-8'>

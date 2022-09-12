@@ -15,6 +15,9 @@ export const MenuScreen = ({ setMainDisplay, calcRandonNumber, setRandomNumber, 
         if (e === 'howto') {
             setTitle('Guías')
         }
+        if (e === 'hist') {
+            setTitle('Historial')
+        }
         setMainDisplay(e)
     }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-export const TutorialCarrousel = () => {
+export const TutorialCarrousel = ({ setMainDisplay }) => {
     // USESTATES
     const [tutPage, setTutPage] = useState(0)
 
@@ -218,7 +218,10 @@ export const TutorialCarrousel = () => {
                 {/* pagina13 */}
                 {(tutPage === 12) && (
                     <>
-                        <p className='text-lg' >¡Manos a la obra!</p>
+                        <p
+                            className=' shadow-sm shadow-blue-700 w-3/4 py-3 mx-auto ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md '
+                            onClick={() => { setMainDisplay('play') }}
+                        >¡Jugar ahora!</p>
                         <img
                             alt=''
                             src='https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif'

@@ -64,7 +64,9 @@ export const ComoJugar = ({ setMainDisplay }) => {
                         >
 
                             Cerrar</button>
-                        <TutorialCarrousel />
+                        <TutorialCarrousel
+                            setMainDisplay={setMainDisplay}
+                        />
                     </div>
                 )
                 }
