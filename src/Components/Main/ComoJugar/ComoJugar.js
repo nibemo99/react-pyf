@@ -42,7 +42,7 @@ export const ComoJugar = ({ setMainDisplay }) => {
                 {/* Mostrar boton de tutorial */}
                 {(estadoBoton === '' || estadoBoton === 'animate-disminuir') && (
                     <>
-                        <p className='text-xl pl-4'>Primeros pasos</p>
+                        <p className='text-xl pl-4'>Basics</p>
                         <div className='flex justify-around items-center'>
                             <p
                                 className='text-sm text-gray-500  hover:text-orange-700 duration-[4000ms]'
@@ -75,7 +75,7 @@ export const ComoJugar = ({ setMainDisplay }) => {
                     <button
                         className=' py-1 mx-5 my-2 hover:scale-105 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md  hover:shadow-orange-500 focus:shadow-orange-500 focus:shadow-md focus:scale-105'
                     >
-                        <p className='text-xl pl-4'>Next</p>
+                        <p className='text-lg text-gray-400 pl-4'>Proximamente</p>
                         <div className='flex justify-around items-center'>
                             <p
                                 className='text-sm text-gray-500  hover:text-orange-700 duration-[4000ms]'
