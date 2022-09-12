@@ -15,6 +15,15 @@ module.exports = {
           }
 
         },
+        wigglesuave: {
+          '0%, 100%': {
+            transform: 'rotate(-1deg)',
+          },
+          '50%': {
+            transform: 'rotate(1deg)',
+          }
+
+        },
         colorChange: {
           '0%, 100%': { color: 'red', transform: 'rotate(-3deg)', },
           '20%': { color: 'blue' },
@@ -54,9 +63,10 @@ module.exports = {
       },
       animation: {
         wiggle: 'wiggleh 1s ease-in-out infinite',
+        wiggles: 'wigglesuave 1s ease-in-out infinite',
         colorChange: 'colorChange 1s ease-in-out infinite',
         bounceToRight: 'bounceToRight 1s infinite',
-        agrandar: 'agrandarDiv 1s forwards',
+        agrandar: 'agrandarDiv 500ms forwards',
         disminuir: 'disminuirDiv 300ms forwards',
       }
     },

@@ -14,14 +14,14 @@ export const ComoJugar = ({ setMainDisplay }) => {
         if (estadoBoton === '') {
             setEstadoBoton('animate-agrandar')
         }
-        if (estadoBoton === 'animate-agrandar') {
-            setEstadoBoton('animate-disminuir')
-
-        }
+        // if (estadoBoton === 'animate-agrandar') {
+        //     setEstadoBoton('animate-disminuir')
+        // }
         if (estadoBoton === 'animate-disminuir') {
             setEstadoBoton('animate-agrandar')
-
         }
+
+
     }
 
     return (
@@ -36,8 +36,9 @@ export const ComoJugar = ({ setMainDisplay }) => {
 
             <button
                 onClick={primerosPasosHandler}
-                className={`py-1 mx-5 my-2 hover:scale-105 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md  hover:shadow-orange-500 focus:shadow-orange-500 focus:shadow-md focus:scale-105  ${estadoBoton}`}
+                className={`py-1 mx-5 my-2 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md   focus:shadow-md   ${estadoBoton} ${(estadoBoton === 'animate-agrandar') ? 'shadow-orange-500 shadow-sm hover:shadow-orange-500 focus:shadow-orange-500' : 'focus:scale-105  hover:scale-105 hover:shadow-orange-500 focus:shadow-orange-500 shadow-blue-700 hover:animate-wiggles'}`}
             >
+                {/* Mostrar boton de tutorial */}
                 {(estadoBoton === '' || estadoBoton === 'animate-disminuir') && (
                     <>
                         <p className='text-xl pl-4'>Primeros pasos</p>
@@ -53,10 +54,17 @@ export const ComoJugar = ({ setMainDisplay }) => {
                         </div>
                     </>
                 )}
-                {(estadoBoton) && (
-                    <>
+                {/* Mostrar tutorial */}
+                {(estadoBoton === 'animate-agrandar') && (
+                    <div className='col-span-2'>
+                        <p>dfasd</p>
+                        <button
+                            onClick={() => setEstadoBoton('animate-disminuir')}
+                            className='col-span-2'
+                        >
 
-                    </>
+                            Return</button>
+                    </div>
                 )
                 }
             </button>
