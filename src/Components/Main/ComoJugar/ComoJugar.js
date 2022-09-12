@@ -36,7 +36,7 @@ export const ComoJugar = ({ setMainDisplay }) => {
 
             <button
                 onClick={primerosPasosHandler}
-                className={`py-1 mx-5 my-2 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md   focus:shadow-md   ${estadoBoton} ${(estadoBoton === 'animate-agrandar') ? 'shadow-orange-500 shadow-sm hover:shadow-orange-500 focus:shadow-orange-500' : 'focus:scale-105  hover:scale-105 hover:shadow-orange-500 focus:shadow-orange-500 shadow-blue-700 hover:animate-wiggles'}`}
+                className={`py-1 mx-5 my-2 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md   focus:shadow-md   ${estadoBoton} ${(estadoBoton === 'animate-agrandar') ? 'shadow-orange-500 shadow-sm hover:shadow-orange-500 focus:shadow-orange-500' : 'focus:scale-105  hover:scale-105 hover:shadow-orange-500 focus:shadow-orange-500 shadow-blue-700 '}`}
             >
                 {/* Mostrar boton de tutorial */}
                 {(estadoBoton === '' || estadoBoton === 'animate-disminuir') && (
@@ -56,14 +56,16 @@ export const ComoJugar = ({ setMainDisplay }) => {
                 )}
                 {/* Mostrar tutorial */}
                 {(estadoBoton === 'animate-agrandar') && (
-                    <div className='col-span-2'>
-                        <p>dfasd</p>
+                    <div className='col-span-2 flex flex-col h-full'>
                         <button
                             onClick={() => setEstadoBoton('animate-disminuir')}
-                            className='col-span-2'
+                            className='col-span-2 w-1/2 mx-auto my-1 hover:scale-125 duration-100'
                         >
 
                             Return</button>
+                        <div>
+                            
+                        </div>
                     </div>
                 )
                 }
