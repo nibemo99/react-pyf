@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
+import { TutorialCarrousel } from '../../TutorialCarrousel/TutorialCarrousel'
 
 export const ComoJugar = ({ setMainDisplay }) => {
     // USE STATES
     const [estadoBoton, setEstadoBoton] = useState('')
-    const [tutorialCard, setTutorialCard] = useState('')
+
 
     // Funciones
     function clickHandler() {
@@ -64,7 +65,7 @@ export const ComoJugar = ({ setMainDisplay }) => {
 
                             Return</button>
                         <div>
-                            
+
                         </div>
                     </div>
                 )
