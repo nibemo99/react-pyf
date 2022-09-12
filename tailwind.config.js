@@ -42,6 +42,18 @@ module.exports = {
             'animation-timing-function': 'cubic-bezier(0,0,0.2,1)',
           },
         },
+        bounceUp: {
+          '0%, 100%': {
+            'color':'black',
+            'transform': 'translateY(-25%)',
+            'animation-timing-function': 'cubic-bezier(0.8,0,1,1)',
+          },
+          '50%': {
+            'color':'gray',
+            'transform': 'none',
+            'animation-timing-function': 'cubic-bezier(0,0,0.2,1)',
+          },
+        },
         agrandarDiv: {
           '0%': {
             'height':'52px',
@@ -60,14 +72,26 @@ module.exports = {
             'color' :'black' ,
           },
         },
+        zoomin: {
+          '0%': {
+            'scale':'0%',
+            'color' :'white' ,
+          },
+          '100%': {
+            'scale':'100%',
+            'color' :'black' ,
+          },
+        },
       },
       animation: {
         wiggle: 'wiggleh 1s ease-in-out infinite',
         wiggles: 'wigglesuave 1s ease-in-out infinite',
         colorChange: 'colorChange 1s ease-in-out infinite',
         bounceToRight: 'bounceToRight 1s infinite',
+        bounceDelayed: 'bounceUp 1s infinite',
         agrandar: 'agrandarDiv 500ms forwards',
         disminuir: 'disminuirDiv 300ms forwards',
+
       }
     },
   },

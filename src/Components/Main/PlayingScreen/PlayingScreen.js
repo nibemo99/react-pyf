@@ -1,5 +1,6 @@
 // INICIO
 import React, { useState } from 'react'
+import { PlayingHelper } from '../../PlayingHelper/PlayingHelper'
 import './../Main.css'
 import { Intento } from './Intento'
 import { Intentos } from './Intentos'
@@ -10,7 +11,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
     // estados
     const [intentos, setIntentos] = useState([])
     // const [intentos, setIntentos] = us eState([{ "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1235", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "1238", "picas": "2", "fijas": "0" }, { "numero": "1239", "picas": "2", "fijas": "0" }, { "numero": "1230", "picas": "1", "fijas": "0" }, { "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "1238", "picas": "2", "fijas": "0" }, { "numero": "1239", "picas": "2", "fijas": "0" }, { "numero": "1234", "picas": "1", "fijas": "0" }, { "numero": "1235", "picas": "1", "fijas": "0" }, { "numero": "1236", "picas": "1", "fijas": "0" }, { "numero": "1237", "picas": "2", "fijas": "0" }, { "numero": "7892", "picas": "0", "fijas": "4" }])
-    const [finished, setFinished] = useState(false)
+    const [finished, setFinished] = useState([0, 'inicio'])
     // const estilos = 'border border-blue-400 '
 
 
@@ -30,7 +31,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
         if (e === 'reseteo') {
             setRandomNumber(calcRandonNumber())
             setTitle('Reiniciado ✔️')
-            setFinished(false)
+            setFinished([0, 'epa'])
             setIntentos([])
 
             // console.log(randomNumber);
@@ -132,7 +133,7 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
             let date = bringDate()
             addToLocalStorage([...intentos, temp,], date, true)
             setTitle('Felicidades!')
-            setFinished(true)
+            setFinished([1, 'true'])
             setTimeout(() => {
                 setTitle('Picas y Fijas')
             }, 3000);
@@ -153,13 +154,18 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
             <div id='botonera' className='flex gap-3 justify-center mb-4'>
                 <button
                     onClick={() => clickHandler('reseteo')}
-                    className={` shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105 ${(finished) ? 'animate-wiggle shadow-lg' : 'shadow-sm'} `}
+                    className={` shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105 ${(finished[0]) ? 'animate-wiggle shadow-lg' : 'shadow-sm'} `}
                 >Reiniciar</button>
                 <button
                     onClick={() => clickHandler('menu')}
                     className='shadow-sm shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
                 >Regresar</button>
-                <span className='shadow-sm shadow-blue-700 w-1/4 mx-2  ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md ' >Ronda: {intentos.length}</span>
+                <PlayingHelper
+                    setFinished={setFinished}
+                    setTitle={setTitle}
+                    setMainDisplay={setMainDisplay}
+                    intentos={intentos}
+                />
 
             </div>
             <div className='grid grid-cols-3 w-3/5 mx-auto bg-blue-300 my-1 text-lg'>
@@ -178,16 +184,16 @@ export const PlayingScreen = ({ setMainDisplay, randomNumber, calcRandonNumber, 
 
                 </div>
             </Intentos>
-            {(!finished) && (
+            {(!finished[0]) && (
                 <input
                     type='number'
                     onKeyUp={inputHandler}
                     onChange={validarInput}
                     className='text-center py-1 my-3 w-2/5 focus:scale-105 ease-out duration-300'
-                    placeholder='Escribe aquí'
+                    placeholder=''
                 />
             )}
-            {(finished) && (
+            {(finished[0]) && (
                 <>
                     <p className='text-2xl py-4'>¡Excelente investigación!</p>
                     <p className='text-xl'>Tu número es:
