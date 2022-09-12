@@ -8,7 +8,7 @@ export const ComoJugar = ({ setMainDisplay }) => {
 
     // Funciones
     function clickHandler() {
-        setMainDisplay('hist')
+        setMainDisplay('menu')
     }
     function primerosPasosHandler(event) {
 

@@ -10,7 +10,7 @@ export const Historial = ({ setMainDisplay }) => {
 
   // funciones
   function clickHandler() {
-    setMainDisplay('howto')
+    setMainDisplay('menu')
   }
   function eliminarRegistro(event) {
     let textoBoton = event.target.innerText
@@ -34,6 +34,7 @@ export const Historial = ({ setMainDisplay }) => {
     localStorage.historial = JSON.stringify([])
   }
   parsedHistory = JSON.parse(localStorage.historial)
+  parsedHistory.reverse()
 
 
   return (
@@ -51,14 +52,12 @@ export const Historial = ({ setMainDisplay }) => {
       {(renderLista === 0) && (
         <div className='flex flex-col'>
 
-          {
-            (parsedHistory.length === 0) && (
-              <>
-                <p className='mx-auto w-2/3 py-3' >¡Ups!</p>
-                <p className='mx-auto w-2/3 py-3' >No tienes historial de partidas por el momento</p>
-              </>
-            )
-          }
+          {(parsedHistory.length === 0) && (
+            <>
+              <p className='mx-auto w-2/3 py-3' >¡Ups!</p>
+              <p className='mx-auto w-2/3 py-3' >No tienes historial de partidas por el momento</p>
+            </>
+          )}
 
           {
             // Traigo el localstorage y lo mapeo para renderizar cada uno de las partidas.
@@ -70,7 +69,7 @@ export const Historial = ({ setMainDisplay }) => {
                   className=' py-1 mx-5 my-2 hover:scale-105 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
                 >
 
-                  <p className='text-2xl tracking-widest hover:scale-110 ease-in-out duration-500 w-fit mx-auto'
+                  <p className={`text-2xl tracking-widest hover:scale-110 ease-in-out duration-500 w-fit mx-auto ${(index === 0) ? 'animate-wiggle' : ''}`}
                   >
                     {element.data[element.data.length - 1].numero}
                   </p>
