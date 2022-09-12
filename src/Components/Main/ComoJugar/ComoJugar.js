@@ -1,10 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const ComoJugar = ({ setMainDisplay }) => {
+    // USE STATES
+    const [estadoBoton, setEstadoBoton] = useState('')
+    const [tutorialCard, setTutorialCard] = useState('')
 
-    // funciones
+    // Funciones
     function clickHandler() {
         setMainDisplay('hist')
+    }
+    function primerosPasosHandler(event) {
+
+        if (estadoBoton === '') {
+            setEstadoBoton('animate-agrandar')
+        }
+        if (estadoBoton === 'animate-agrandar') {
+            setEstadoBoton('animate-disminuir')
+
+        }
+        if (estadoBoton === 'animate-disminuir') {
+            setEstadoBoton('animate-agrandar')
+
+        }
     }
 
     return (
@@ -18,35 +35,51 @@ export const ComoJugar = ({ setMainDisplay }) => {
             >Regresar</button>
 
             <button
-                className=' py-1 mx-5 my-2 hover:scale-105 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md  hover:shadow-orange-500 focus:shadow-orange-500 focus:shadow-md focus:scale-105 '
+                onClick={primerosPasosHandler}
+                className={`py-1 mx-5 my-2 hover:scale-105 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md  hover:shadow-orange-500 focus:shadow-orange-500 focus:shadow-md focus:scale-105  ${estadoBoton}`}
             >
-                <p className='text-xl pl-4'>Primeros pasos</p>
-                <div className='flex justify-around items-center'>
-                    <p
-                        className='text-sm text-gray-500  hover:text-orange-700 duration-[4000ms]'
-                    >Est: <span>3mins</span></p>
-                    <img
-                        alt='GO!'
-                        src='https://cdn-icons-png.flaticon.com/512/271/271228.png'
-                        className='w-6 py-3 hover:animate-bounceToRight'
-                    />
-                </div>
+                {(estadoBoton === '' || estadoBoton === 'animate-disminuir') && (
+                    <>
+                        <p className='text-xl pl-4'>Primeros pasos</p>
+                        <div className='flex justify-around items-center'>
+                            <p
+                                className='text-sm text-gray-500  hover:text-orange-700 duration-[4000ms]'
+                            >Est: <span>3mins</span></p>
+                            <img
+                                alt='GO!'
+                                src='https://cdn-icons-png.flaticon.com/512/271/271228.png'
+                                className='w-6 py-3 hover:animate-bounceToRight'
+                            />
+                        </div>
+                    </>
+                )}
+                {(estadoBoton) && (
+                    <>
+
+                    </>
+                )
+                }
             </button>
-            <button
-                className=' py-1 mx-5 my-2 hover:scale-105 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md  hover:shadow-orange-500 focus:shadow-orange-500 focus:shadow-md focus:scale-105'
-            >
-                <p className='text-xl pl-4'>Next</p>
-                <div className='flex justify-around items-center'>
-                    <p
-                        className='text-sm text-gray-500  hover:text-orange-700 duration-[4000ms]'
-                    >Est: <span>5mins</span></p>
-                    <img
-                        alt='GO!'
-                        src='https://cdn-icons-png.flaticon.com/512/271/271228.png'
-                        className='w-6 py-3 hover:animate-bounceToRight'
-                    />
-                </div>
-            </button>
+
+            {(estadoBoton === '' || estadoBoton === 'animate-disminuir') && (
+                <>
+                    <button
+                        className=' py-1 mx-5 my-2 hover:scale-105 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md  hover:shadow-orange-500 focus:shadow-orange-500 focus:shadow-md focus:scale-105'
+                    >
+                        <p className='text-xl pl-4'>Next</p>
+                        <div className='flex justify-around items-center'>
+                            <p
+                                className='text-sm text-gray-500  hover:text-orange-700 duration-[4000ms]'
+                            >Est: <span>5mins</span></p>
+                            <img
+                                alt='GO!'
+                                src='https://cdn-icons-png.flaticon.com/512/271/271228.png'
+                                className='w-6 py-3 hover:animate-bounceToRight'
+                            />
+                        </div>
+                    </button>
+                </>
+            )}
 
 
 

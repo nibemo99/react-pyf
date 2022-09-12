@@ -33,11 +33,31 @@ module.exports = {
             'animation-timing-function': 'cubic-bezier(0,0,0.2,1)',
           },
         },
+        agrandarDiv: {
+          '0%': {
+            'height':'52px',
+          },
+          '100%': {
+            'height':'300px',
+          },
+        },
+        disminuirDiv: {
+          '0%': {
+            'height':'400px',
+            'color' :'white' ,
+          },
+          '100%': {
+            'height':'52px',
+            'color' :'black' ,
+          },
+        },
       },
       animation: {
         wiggle: 'wiggleh 1s ease-in-out infinite',
         colorChange: 'colorChange 1s ease-in-out infinite',
-        bounceToRight: 'bounceToRight 1s infinite'
+        bounceToRight: 'bounceToRight 1s infinite',
+        agrandar: 'agrandarDiv 1s forwards',
+        disminuir: 'disminuirDiv 300ms forwards',
       }
     },
   },
