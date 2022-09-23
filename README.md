@@ -1,3 +1,8 @@
-Hello this is picas y fijas.
+Hello, this is picas y fijas.
 
-Working on this readme.
+Challenge your guessing abilities and train your deductive logic.
+
+https://picas.imhere4.art/
+
+Currently working on adding different languages.
+
