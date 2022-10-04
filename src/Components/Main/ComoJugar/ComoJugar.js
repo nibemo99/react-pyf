@@ -1,25 +1,22 @@
 import React, { useState } from 'react'
 import { TutorialCarrousel } from '../../TutorialCarrousel/TutorialCarrousel'
 
-export const ComoJugar = ({ setMainDisplay }) => {
+export const ComoJugar = ( { setMainDisplay, setRandomNumber, calcRandomNumber } ) => {
     // USE STATES
-    const [estadoBoton, setEstadoBoton] = useState('')
+    const [estadoBoton, setEstadoBoton] = useState( '' )
 
 
     // Funciones
-    function clickHandler() {
-        setMainDisplay('menu')
+    function clickHandler () {
+        setMainDisplay( 'menu' )
     }
-    function primerosPasosHandler(event) {
+    function primerosPasosHandler ( event ) {
 
-        if (estadoBoton === '') {
-            setEstadoBoton('animate-agrandar')
+        if ( estadoBoton === '' ) {
+            setEstadoBoton( 'animate-agrandar' )
         }
-        // if (estadoBoton === 'animate-agrandar') {
-        //     setEstadoBoton('animate-disminuir')
-        // }
-        if (estadoBoton === 'animate-disminuir') {
-            setEstadoBoton('animate-agrandar')
+        if ( estadoBoton === 'animate-disminuir' ) {
+            setEstadoBoton( 'animate-agrandar' )
         }
 
 
@@ -37,12 +34,12 @@ export const ComoJugar = ({ setMainDisplay }) => {
 
             <button
                 onClick={primerosPasosHandler}
-                className={`py-1 mx-5 my-2 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md   focus:shadow-md   ${estadoBoton} ${(estadoBoton === 'animate-agrandar') ? 'shadow-orange-500 shadow-sm hover:shadow-orange-500 focus:shadow-orange-500' : 'focus:scale-105  hover:scale-105 hover:shadow-orange-500 focus:shadow-orange-500 shadow-blue-700 '}`}
+                className={`py-1 mx-5 my-2 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md   focus:shadow-md   ${estadoBoton} ${( estadoBoton === 'animate-agrandar' ) ? 'shadow-orange-500 shadow-sm hover:shadow-orange-500 focus:shadow-orange-500' : 'focus:scale-105  hover:scale-105 hover:shadow-orange-500 focus:shadow-orange-500 shadow-blue-700 '}`}
             >
                 {/* Mostrar boton de tutorial */}
-                {(estadoBoton === '' || estadoBoton === 'animate-disminuir') && (
+                {( estadoBoton === '' || estadoBoton === 'animate-disminuir' ) && (
                     <>
-                        <p className='text-xl pl-4'>Basics</p>
+                        <p className='text-xl pl-4'>Bases</p>
                         <div className='flex justify-around items-center'>
                             <p
                                 className='text-sm text-gray-500  hover:text-orange-700 duration-[4000ms]'
@@ -56,15 +53,17 @@ export const ComoJugar = ({ setMainDisplay }) => {
                     </>
                 )}
                 {/* Mostrar tutorial */}
-                {(estadoBoton === 'animate-agrandar') && (
+                {( estadoBoton === 'animate-agrandar' ) && (
                     <div className='col-span-2 flex flex-col h-full'>
                         <button
-                            onClick={() => setEstadoBoton('animate-disminuir')}
+                            onClick={() => setEstadoBoton( 'animate-disminuir' )}
                             className='col-span-2 w-1/2 mx-auto my-1 hover:scale-125 duration-100 text-gray-400 hover:text-gray-800'
                         >
 
                             Cerrar</button>
                         <TutorialCarrousel
+                            setRandomNumber={setRandomNumber}
+                            calcRandomNumber={calcRandomNumber}
                             setMainDisplay={setMainDisplay}
                         />
                     </div>
@@ -72,7 +71,7 @@ export const ComoJugar = ({ setMainDisplay }) => {
                 }
             </button>
 
-            {(estadoBoton === '' || estadoBoton === 'animate-disminuir') && (
+            {( estadoBoton === '' || estadoBoton === 'animate-disminuir' ) && (
                 <>
                     <button
                         className=' py-1 mx-5 my-2 hover:scale-105 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md  hover:shadow-orange-500 focus:shadow-orange-500 focus:shadow-md focus:scale-105'

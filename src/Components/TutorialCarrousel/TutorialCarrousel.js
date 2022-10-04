@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 
 
-export const TutorialCarrousel = ({ setMainDisplay }) => {
+export const TutorialCarrousel = ( { setMainDisplay, setRandomNumber, calcRandomNumber } ) => {
     // USESTATES
-    const [tutPage, setTutPage] = useState(0)
+    const [tutPage, setTutPage] = useState( 0 )
 
     // FUNCIONES
-    function moveCardsLeft(event) {
-        if (tutPage !== 0) {
-            setTutPage(tutPage - 1)
+    function moveCardsLeft ( event ) {
+        if ( tutPage !== 0 ) {
+            setTutPage( tutPage - 1 )
         }
     }
-    function moveCardsRight(event) {
-        if (tutPage !== last) {
-            setTutPage(tutPage + 1)
+    function moveCardsRight ( event ) {
+        if ( tutPage !== last ) {
+            setTutPage( tutPage + 1 )
         }
     }
 
@@ -31,7 +31,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
 
             ><img
                     alt=''
-                    src={`${(tutPage === 0) ? '' : 'https://cdn-icons-png.flaticon.com/512/271/271228.png'}`}
+                    src={`${( tutPage === 0 ) ? '' : 'https://cdn-icons-png.flaticon.com/512/271/271228.png'}`}
                     className='rotate-180 px-2'
                 /></button>
 
@@ -39,15 +39,15 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
             <div className=' col-span-8 mx-4 h-full flex flex-col justify-center gap-4'>
 
                 {/* Div para paginación */}
-                <div className='text-sm text-gray-400 hover:text-gray-800 duration-150 w-10 h-10 absolute bottom-0 left-1' >{(tutPage === 0 || tutPage === last) ? '' : tutPage}</div>
-                <div className='text-sm text-gray-400 hover:text-gray-800 duration-150 w-10 h-10 absolute bottom-0 right-1' >{(tutPage === last) ? '' : last}</div>
+                <div className='text-sm text-gray-400 hover:text-gray-800 duration-150 w-10 h-10 absolute bottom-0 left-1' >{( tutPage === 0 || tutPage === last ) ? '' : tutPage}</div>
+                <div className='text-sm text-gray-400 hover:text-gray-800 duration-150 w-10 h-10 absolute bottom-0 right-1' >{( tutPage === last ) ? '' : last}</div>
 
 
 
 
 
                 {/* pagina1 */}
-                {(tutPage === 0) && (
+                {( tutPage === 0 ) && (
                     <>
                         <p className='text-xl' >Voy a pensar un número...</p>
                         <img
@@ -59,7 +59,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                 )}
 
                 {/* pagina2 */}
-                {(tutPage === 1) && (
+                {( tutPage === 1 ) && (
                     <>
                         <p className='text-lg' >El número no será complicado:</p>
                         <img
@@ -72,7 +72,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                 )}
 
                 {/* pagina3 */}
-                {(tutPage === 2) && (
+                {( tutPage === 2 ) && (
                     <>
                         <p className='text-lg' >Pero, </p>
                         <img
@@ -85,7 +85,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                 )}
 
                 {/* pagina4 */}
-                {(tutPage === 3) && (
+                {( tutPage === 3 ) && (
                     <>
                         <p className='text-lg' >En cada ronda, envías tu intento.</p>
                         <img
@@ -98,7 +98,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                 )}
 
                 {/* pagina5 */}
-                {(tutPage === 4) && (
+                {( tutPage === 4 ) && (
                     <>
                         <p className='text-lg' >Miremos un ejemplo.</p>
                         <p className='text-base' >Número secreto:</p>
@@ -111,7 +111,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                 )}
 
                 {/* pagina6 */}
-                {(tutPage === 5) && (
+                {( tutPage === 5 ) && (
                     <div className='flex flex-col justify-evenly h-full' >
                         <p className='text-xl' >¡Acertaste el 1 y el 4!</p>
                         <p className='text-base mt-1' >Sin embargo, en la posición incorrecta.</p>
@@ -126,7 +126,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                 )}
 
                 {/* pagina7 */}
-                {(tutPage === 6) && (
+                {( tutPage === 6 ) && (
                     <div className='flex flex-col justify-center gap-6 h-full' >
                         <p className='text-base mt-1' >Cuando aciertas algún número, pero en la posición incorrecta.</p>
                         <p className='text-2xl mt-1' >Lo llamaremos una <span className='inline-block animate-wiggle' >pica.</span></p>
@@ -136,7 +136,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                 )}
 
                 {/* pagina8 */}
-                {(tutPage === 7) && (
+                {( tutPage === 7 ) && (
                     <>
                         <p className='text-lg' >Continuando el ejemplo.</p>
                         <p className='text-base' >Número secreto:</p>
@@ -148,7 +148,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                 )}
 
                 {/* pagina9 */}
-                {(tutPage === 8) && (
+                {( tutPage === 8 ) && (
                     <div className='flex flex-col justify-evenly h-full' >
                         <p className='text-xl' >¡Acertaste el 6!</p>
                         <p className='text-base mt-1' >¡Y en la posición correcta!</p>
@@ -164,7 +164,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                 )}
 
                 {/* pagina10 */}
-                {(tutPage === 9) && (
+                {( tutPage === 9 ) && (
                     <div className='flex flex-col justify-center gap-6 h-full' >
                         <p className='text-base mt-1' >Cuando aciertas algún número y en la posición correcta.</p>
                         <p className='text-2xl mt-1' >Lo llamaremos una <span className='inline-block animate-wiggle' >fija.</span></p>
@@ -174,7 +174,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                 )}
 
                 {/* pagina11 last added*/}
-                {(tutPage === 10) && (
+                {( tutPage === 10 ) && (
                     <div className='flex flex-col justify-center gap-6 h-full' >
                         <p className='text-base mt-1' >Aunque jugando, esta, sería tu vista.</p>
                         <div>
@@ -194,7 +194,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                             <input
                                 type='number'
                                 className='text-center py-1 my-3 w-2/5 focus:scale-105 ease-out duration-300'
-                                onChange={(e) => { e.target.value = '' }}
+                                onChange={( e ) => { e.target.value = '' }}
                                 placeholder=''
                             />
                         </div>
@@ -202,7 +202,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                 )}
 
                 {/* pagina12 */}
-                {(tutPage === 11) && (
+                {( tutPage === 11 ) && (
                     <div className='flex flex-col justify-evenly h-full' >
                         <p className='text-xl' >¡Consigue 4 fijas para ganar!</p>
                         <div>
@@ -216,11 +216,14 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                 )}
 
                 {/* pagina13 */}
-                {(tutPage === 12) && (
+                {( tutPage === 12 ) && (
                     <>
                         <p
                             className=' shadow-sm shadow-blue-700 w-3/4 py-3 mx-auto ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md '
-                            onClick={() => { setMainDisplay('play') }}
+                            onClick={() => {
+                                setRandomNumber( calcRandomNumber )
+                                setMainDisplay( 'play' )
+                            }}
                         >¡Jugar ahora!</p>
                         <img
                             alt=''
@@ -247,7 +250,7 @@ export const TutorialCarrousel = ({ setMainDisplay }) => {
                 onClick={moveCardsRight}
             ><img
                     alt=''
-                    src={`${(tutPage === last) ? '' : 'https://cdn-icons-png.flaticon.com/512/271/271228.png'}`}
+                    src={`${( tutPage === last ) ? '' : 'https://cdn-icons-png.flaticon.com/512/271/271228.png'}`}
                     className='px-2'
                 /></button>
         </div>

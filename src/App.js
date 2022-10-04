@@ -28,7 +28,7 @@ function App () {
     localStorage.historial = JSON.stringify( temp )
     // console.log('recien lo guarde', JSON.parse(localStorage.historial));
   }
-  function calcRandonNumber () {
+  function calcRandomNumber () {
     let temp = 0
     while ( !temp ) {
       temp++
@@ -65,7 +65,7 @@ function App () {
           {/* aqui se renderizan los botones o lo que sea */}
           {( mainDisplay === 'menu' ) &&
             <MenuScreen
-              calcRandonNumber={calcRandonNumber}
+              calcRandomNumber={calcRandomNumber}
               setRandomNumber={setRandomNumber}
               setMainDisplay={setMainDisplay}
               setTitle={setTitle}
@@ -78,7 +78,7 @@ function App () {
               title={title}
               setTitle={setTitle}
               randomNumber={randomNumber}
-              calcRandonNumber={calcRandonNumber}
+              calcRandomNumber={calcRandomNumber}
               setRandomNumber={setRandomNumber}
             />}
 
@@ -89,6 +89,8 @@ function App () {
 
           {( mainDisplay === 'howto' ) &&
             <ComoJugar
+              setRandomNumber={setRandomNumber}
+              calcRandomNumber={calcRandomNumber}
               setMainDisplay={setMainDisplay}
             />}
 

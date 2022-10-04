@@ -7,7 +7,7 @@ import { Intentos } from './Intentos'
 
 
 
-export const PlayingScreen = ( { setMainDisplay, randomNumber, calcRandonNumber, setRandomNumber, addToLocalStorage, title, setTitle } ) => {
+export const PlayingScreen = ( { setMainDisplay, randomNumber, calcRandomNumber, setRandomNumber, addToLocalStorage, title, setTitle } ) => {
     // estados
     const [intentos, setIntentos] = useState( [] )
     const [finished, setFinished] = useState( [0, 'Intenta 1234'] )
@@ -23,7 +23,7 @@ export const PlayingScreen = ( { setMainDisplay, randomNumber, calcRandonNumber,
             }, 1500 );
         }
         if ( e === 'reseteo' ) {
-            setRandomNumber( calcRandonNumber() )
+            setRandomNumber( calcRandomNumber() )
             setTitle( 'Reiniciado ✔️' )
             setFinished( [0, 'Intenta 1234'] )
             setIntentos( [] )
