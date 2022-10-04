@@ -10,37 +10,37 @@ import { ComoJugar } from './Components/Main/ComoJugar/ComoJugar';
 
 
 
-function App() {
+function App () {
   // useStatesss
-  const [mainDisplay, setMainDisplay] = useState('menu')
-  const [title, setTitle] = useState('Picas y Fijas')
-  const [randomNumber, setRandomNumber] = useState(0)
+  const [mainDisplay, setMainDisplay] = useState( 'menu' )
+  const [title, setTitle] = useState( 'Picas & Fijas' )
+  const [randomNumber, setRandomNumber] = useState( 0 )
 
   // funcionesss
-  function addToLocalStorage(e, date, status) {
-    if (localStorage.historial === undefined) localStorage.historial = JSON.stringify([])
-    let temp = JSON.parse(localStorage.historial)
-    temp.push({
+  function addToLocalStorage ( e, date, status ) {
+    if ( localStorage.historial === undefined ) localStorage.historial = JSON.stringify( [] )
+    let temp = JSON.parse( localStorage.historial )
+    temp.push( {
       date: `${date}`,
       data: e,
       completed: status,
-    })
-    localStorage.historial = JSON.stringify(temp)
+    } )
+    localStorage.historial = JSON.stringify( temp )
     // console.log('recien lo guarde', JSON.parse(localStorage.historial));
   }
-  function calcRandonNumber() {
+  function calcRandonNumber () {
     let temp = 0
-    while (!temp) {
+    while ( !temp ) {
       temp++
-      temp = `${Math.trunc((Math.random() * 10000))}`
+      temp = `${Math.trunc( ( Math.random() * 10000 ) )}`
       temp =
-        (temp.length === 4) &&
-        (temp[0] !== temp[1]) &&
-        (temp[0] !== temp[2]) &&
-        (temp[0] !== temp[3]) &&
-        (temp[1] !== temp[2]) &&
-        (temp[1] !== temp[3]) &&
-        (temp[2] !== temp[3]) && temp
+        ( temp.length === 4 ) &&
+        ( temp[0] !== temp[1] ) &&
+        ( temp[0] !== temp[2] ) &&
+        ( temp[0] !== temp[3] ) &&
+        ( temp[1] !== temp[2] ) &&
+        ( temp[1] !== temp[3] ) &&
+        ( temp[2] !== temp[3] ) && temp
     }
     return temp
 
@@ -63,7 +63,7 @@ function App() {
 
         <Main className=''>
           {/* aqui se renderizan los botones o lo que sea */}
-          {(mainDisplay === 'menu') &&
+          {( mainDisplay === 'menu' ) &&
             <MenuScreen
               calcRandonNumber={calcRandonNumber}
               setRandomNumber={setRandomNumber}
@@ -71,7 +71,7 @@ function App() {
               setTitle={setTitle}
             />}
 
-          {(mainDisplay === 'play') &&
+          {( mainDisplay === 'play' ) &&
             <PlayingScreen
               setMainDisplay={setMainDisplay}
               addToLocalStorage={addToLocalStorage}
@@ -82,12 +82,12 @@ function App() {
               setRandomNumber={setRandomNumber}
             />}
 
-          {(mainDisplay === 'hist') &&
+          {( mainDisplay === 'hist' ) &&
             <Historial
               setMainDisplay={setMainDisplay}
             />}
 
-          {(mainDisplay === 'howto') &&
+          {( mainDisplay === 'howto' ) &&
             <ComoJugar
               setMainDisplay={setMainDisplay}
             />}

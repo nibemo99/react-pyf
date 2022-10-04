@@ -1,8 +1,7 @@
 {
   "short_name": "pyf",
-  "name": "Picas y Fijas",
-  "icons": [
-  ],
+  "name": "Picas & Fijas",
+  "icons": [],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
