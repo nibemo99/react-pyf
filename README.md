@@ -28,6 +28,7 @@ My father taught me this game on a piece of paper over 10 years ago. Now, with m
 ## Currently working on:
 
 - Adding english language support.
+- Adding 1 vs 1 duel, game option.
 - Implementing React Router to add funtionalities like continue a game that was not finished and future game types.
 - Currenty learning Three.js to add more interesting visuals with 3D and physics. 
 
@@ -39,6 +40,7 @@ My father taught me this game on a piece of paper over 10 years ago. Now, with m
 
 
 
-### Want to contact me?
+## Thank you for reading! 🤓
 
-- I'm all ears 😊 → [hello@nicolasbm.dev](mailto:hello@nicolasbm.dev)
+Want to contact me? I'm all ears 😊 → [hello@nicolasbm.dev](mailto:hello@nicolasbm.dev)
+
