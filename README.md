@@ -15,7 +15,7 @@ My father taught me this game on a piece of paper over 10 years ago. Now, with m
 
 ## Technical objectives:
 
-- Build the logic for input validation using react hooks.
+- Build the logic for input validation using React and React Hooks.
 - Build extra hint system to assist players using the input's placeholder property.
 - Save history of games using Window's Local Storage.
 - Style using tailwindcss 3.
