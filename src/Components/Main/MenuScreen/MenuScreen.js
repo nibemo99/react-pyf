@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useTranslation } from "react-i18next";
 import './../Main.css'
 
@@ -85,6 +85,8 @@ export const MenuScreen = ( { setMainDisplay, calcRandomNumber, setRandomNumber,
             </label>
 
             <a
+                target='_blank'
+                rel='noreferrer'
                 href='https://github.com/nibemo99/react-pyf'
                 className='flex gap-3 absolute left-1/2 bottom-10 -translate-x-1/2 hover:scale-110 duration-300'
             >
