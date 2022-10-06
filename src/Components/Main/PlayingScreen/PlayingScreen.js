@@ -17,10 +17,6 @@ export const PlayingScreen = ( { setMainDisplay, randomNumber, calcRandomNumber,
         if ( e === 'menu' ) {
             setTitle( 'Picas & Fijas' )
             setMainDisplay( e )
-            setTimeout( () => {
-                // console.log('epa');
-                setTitle( 'Picas & Fijas' )
-            }, 1500 );
         }
         if ( e === 'reseteo' ) {
             setRandomNumber( calcRandomNumber() )
@@ -156,8 +152,6 @@ export const PlayingScreen = ( { setMainDisplay, randomNumber, calcRandomNumber,
 
 
     }
-
-
 
     // EN CADA RENDER
     if ( title !== 'A jugar! ⌛' ) {
