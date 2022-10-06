@@ -7,10 +7,15 @@ import { PlayingScreen } from './Components/Main/PlayingScreen/PlayingScreen';
 import { Historial } from './Components/Main/Historial/Historial'
 import { useState } from 'react';
 import { ComoJugar } from './Components/Main/ComoJugar/ComoJugar';
+import { useTranslation } from 'react-i18next';
 
 
 
 function App () {
+  // language
+  const { t } = useTranslation();
+
+
   // useStatesss
   const [mainDisplay, setMainDisplay] = useState( 'menu' )
   const [title, setTitle] = useState( 'Picas & Fijas' )
@@ -29,6 +34,7 @@ function App () {
     // console.log('recien lo guarde', JSON.parse(localStorage.historial));
   }
   function calcRandomNumber () {
+    setTitle( `${t( "Let's play!" )} ⌛` )
     let temp = 0
     while ( !temp ) {
       temp++
