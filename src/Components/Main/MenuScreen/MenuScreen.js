@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from "react-i18next";
 import './../Main.css'
 
 export const MenuScreen = ( { setMainDisplay, calcRandomNumber, setRandomNumber, title, setTitle } ) => {
     // language setup
     const { t, i18n } = useTranslation();
+    const handleChangeLng = () => {
+        if ( language === 'es' ) {
+            i18n.changeLanguage( 'en' );
+            localStorage.setItem( "lng", 'en' );
+            language = 'en'
+        }
+        else if ( language === 'en' ) {
+            i18n.changeLanguage( 'es' );
+            localStorage.setItem( "lng", 'es' );
+            language = 'es'
+        }
+    };
 
-    // states
-    const estilos = 'w-2/3 py-4 shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500'
+    // variables
+    let language = localStorage.getItem( 'lng' ) || 'en'
 
     // functions
     const clickHandler = ( e ) => {
@@ -23,7 +35,6 @@ export const MenuScreen = ( { setMainDisplay, calcRandomNumber, setRandomNumber,
         }
         setMainDisplay( e )
     }
-
 
     // En cada render
     if ( title !== 'Picas & Fijas' ) {
@@ -42,17 +53,37 @@ export const MenuScreen = ( { setMainDisplay, calcRandomNumber, setRandomNumber,
                 </button>
                 <button
                     onClick={() => clickHandler( 'hist' )}
-                    className={estilos}
+                    className='w-2/3 py-4 shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500'
                 >
                     {t( "History" )}
                 </button>
                 <button
                     onClick={() => clickHandler( 'howto' )}
-                    className={estilos}
+                    className='w-2/3 py-4 shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500'
                 >
                     {t( "How to play" )}
                 </button>
+
             </div>
+            <label
+                htmlFor="teal-toggle"
+                className="inline-flex absolute left-28 bottom-10 -translate-x-1/2 items-center mr-5 cursor-pointer"
+            >
+                <input
+                    type="checkbox"
+                    value=""
+                    id="teal-toggle"
+                    class="sr-only peer"
+                    checked={( language === 'en' ) ? false : true}
+                    onClick={handleChangeLng}
+                />
+                <div className="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-blue-700 peer-focus:ring-4 peer-focus:ring-teal-300 dark:peer-focus:ring-teal-800 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-teal-600">
+                    <span className='text-white absolute w-full bottom-[2px] left-0'>
+                        en es
+                    </span>
+                </div>
+            </label>
+
             <a
                 href='https://github.com/nibemo99/react-pyf'
                 className='flex gap-3 absolute left-1/2 bottom-10 -translate-x-1/2 hover:scale-110 duration-300'

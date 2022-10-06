@@ -15,7 +15,6 @@ function App () {
   // language
   const { t } = useTranslation();
 
-
   // useStatesss
   const [mainDisplay, setMainDisplay] = useState( 'menu' )
   const [title, setTitle] = useState( 'Picas & Fijas' )
