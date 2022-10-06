@@ -38,7 +38,7 @@ export const PlayingHelper = ( { intentos, setMainDisplay, setTitle, finished, s
                 {( intentos.length === 0 ) && (
                     <button
                         className='w-full h-full animate-wiggle'
-                        onClick={() => { setMainDisplay( 'howto' ); setTitle( 'Guías' ) }}
+                        onClick={() => { setMainDisplay( 'howto' ); setTitle( t( "Guides" ) ) }}
                     >
                         Tutorial
                     </button>
