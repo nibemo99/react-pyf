@@ -1,16 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CreateGame from './CreateGame'
+import JoinGame from './JoinGame'
 
 const MultiplayerScreen = ( { setMainDisplay } ) => {
+    const [option, setOption] = useState( true )
 
     const changeHandler = ( event ) => {
-        let value = event.target.value
-        if ( value === 'Create' ) {
-            // do som
-        }
-        else if ( value === 'Join' ) {
-            // do som
-        }
+        setOption( prev => !prev )
     }
 
     const handleBack = () => {
@@ -29,7 +25,7 @@ const MultiplayerScreen = ( { setMainDisplay } ) => {
                 <p className='p-4 text-xl cursor-pointer' onClick={changeHandler}>Join</p>
             </div>
 
-            <CreateGame />
+            {( option ) ? <CreateGame /> : <JoinGame />}
 
         </div>
     )
