@@ -203,7 +203,7 @@ const TutorialCarrousel = ( { setMainDisplay, setRandomNumber, calcRandomNumber 
                 {( tutPage === 12 ) && (
                     <>
                         <p
-                            className=' shadow-sm shadow-blue-700 w-3/4 py-3 mx-auto ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md '
+                            className='rounded-xl shadow-sm shadow-blue-700 w-3/4 py-3 mx-auto ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md '
                             onClick={() => {
                                 setRandomNumber( calcRandomNumber )
                                 setMainDisplay( 'play' )

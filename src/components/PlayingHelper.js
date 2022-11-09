@@ -34,10 +34,10 @@ const PlayingHelper = ( { intentos, setMainDisplay, setTitle, finished, setFinis
     return (
         <>
             {/* Todo el recuadro de Ronda */}
-            <span className='relative shadow-sm shadow-blue-700 w-1/4 mx-2  ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md ' >
+            <span className='rounded-xl relative shadow-sm shadow-blue-700 w-1/4 mx-2  ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md ' >
                 {( intentos.length === 0 ) && (
                     <button
-                        className='w-full h-full animate-wiggle'
+                        className='rounded-xl w-full h-full animate-wiggle'
                         onClick={() => { setMainDisplay( 'howto' ); setTitle( t( "Guides" ) ) }}
                     >
                         Tutorial

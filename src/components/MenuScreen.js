@@ -27,11 +27,14 @@ const MenuScreen = ( { setMainDisplay, calcRandomNumber, setRandomNumber, title,
             setRandomNumber( calcRandomNumber )
             setTitle( `${t( "Let's play!" )} ⌛` )
         }
+        if ( e === 'hist' ) {
+            setTitle( t( "History" ) )
+        }
         if ( e === 'howto' ) {
             setTitle( `${t( "Guides" )}` )
         }
-        if ( e === 'hist' ) {
-            setTitle( t( "History" ) )
+        if ( e === 'multiplayer' ) {
+            setTitle( `${t( "Multiplayer" )}` )
         }
         setMainDisplay( e )
     }
@@ -46,22 +49,28 @@ const MenuScreen = ( { setMainDisplay, calcRandomNumber, setRandomNumber, title,
             <div className='flex flex-col justify-center items-center gap-5 mt-16'>
                 {/* <button>Reanudar</button> */}
                 <button
-                    className='w-2/3 py-4 shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500 '
+                    className='w-2/3 py-4 rounded-xl shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500 '
                     onClick={() => clickHandler( 'play' )}
                 >
                     {t( "New game" )}
                 </button>
                 <button
                     onClick={() => clickHandler( 'hist' )}
-                    className='w-2/3 py-4 shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500'
+                    className='w-2/3 py-4 rounded-xl shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500'
                 >
                     {t( "History" )}
                 </button>
                 <button
                     onClick={() => clickHandler( 'howto' )}
-                    className='w-2/3 py-4 shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500'
+                    className='w-2/3 py-4 rounded-xl shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500'
                 >
                     {t( "How to play" )}
+                </button>
+                <button
+                    onClick={() => clickHandler( 'multiplayer' )}
+                    className='w-2/3 py-4 rounded-xl shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500'
+                >
+                    {t( "Multiplayer" )}
                 </button>
 
             </div>
@@ -73,7 +82,7 @@ const MenuScreen = ( { setMainDisplay, calcRandomNumber, setRandomNumber, title,
                     type="checkbox"
                     value=""
                     id="teal-toggle"
-                    class="sr-only peer"
+                    className="sr-only peer"
                     checked={( language === 'en' ) ? false : true}
                     onClick={handleChangeLng}
                 />

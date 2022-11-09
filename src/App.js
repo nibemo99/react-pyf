@@ -8,6 +8,7 @@ import Historial from './components/Historial'
 import ComoJugar from './components/ComoJugar';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import MultiplayerScreen from './components/MultiplayerScreen';
 
 
 
@@ -96,6 +97,10 @@ function App () {
             <ComoJugar
               setRandomNumber={setRandomNumber}
               calcRandomNumber={calcRandomNumber}
+              setMainDisplay={setMainDisplay}
+            />}
+          {( mainDisplay === 'multiplayer' ) &&
+            <MultiplayerScreen
               setMainDisplay={setMainDisplay}
             />}
 

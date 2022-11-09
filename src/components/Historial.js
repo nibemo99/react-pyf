@@ -39,7 +39,7 @@ const Historial = ( { setMainDisplay } ) => {
     <div className={` w-4/5 mx-auto mb-10 flex flex-col overflow-auto no-scrollbar ${( renderLista === 0 ) ? 'h-[450px]' : ''}`}>
       <button
         onClick={clickHandler}
-        className='shadow-sm shadow-blue-700 py-4 mx-auto my-4 w-1/2 hover:bg-blue-700 hover:text-white hover:scale-105 ease-out duration-500 focus:bg-blue-700 focus:text-white focus:scale-105'
+        className='rounded-xl shadow-sm shadow-blue-700 py-4 mx-auto my-4 w-1/2 hover:bg-blue-700 hover:text-white hover:scale-105 ease-out duration-500 focus:bg-blue-700 focus:text-white focus:scale-105'
       >{t( "Back" )}</button>
 
       {/* SI RENDERLISTA === 0, renderiza toda la lista */}
@@ -59,7 +59,7 @@ const Historial = ( { setMainDisplay } ) => {
                 <button
                   key={index}
                   onClick={() => { setRenderLista( index + 1 ) }}
-                  className=' py-1 mx-5 my-2 hover:scale-105 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
+                  className='rounded-xl py-1 mx-5 my-2 hover:scale-105 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
                 >
 
                   <p className={`text-2xl tracking-widest hover:scale-110 ease-in-out duration-500 w-fit mx-auto ${( index === 0 ) ? 'animate-wiggle' : ''}`}
@@ -107,11 +107,11 @@ const Historial = ( { setMainDisplay } ) => {
           </div>
           <button
             onClick={( e ) => { setRenderLista( 0 ) }}
-            className='shadow-sm shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
+            className='rounded-xl shadow-sm shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
           >{t( "Return" )}</button>
           <button
             onClick={eliminarRegistro}
-            className='shadow-sm shadow-red-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-red-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105 '
+            className='rounded-xl shadow-sm shadow-red-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-red-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105 '
           >{t( "Delete" )}</button>
 
         </div>

@@ -59,8 +59,6 @@ const PlayingScreen = ( { setMainDisplay, randomNumber, calcRandomNumber, setRan
         let input = e.target.value
         let temp = Array.from( input )
 
-
-
         // si se detecta un menos, se ataca de una
         if ( input[0] === '-' ) {
             temp.shift()
@@ -138,11 +136,11 @@ const PlayingScreen = ( { setMainDisplay, randomNumber, calcRandomNumber, setRan
             <div id='botonera' className='flex gap-3 justify-center mb-4'>
                 <button
                     onClick={() => clickHandler( 'reseteo' )}
-                    className={` shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105 ${( finished[0] ) ? 'animate-wiggle shadow-lg' : 'shadow-sm'} `}
+                    className={` rounded-xl shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105 ${( finished[0] ) ? 'animate-wiggle shadow-lg' : 'shadow-sm'} `}
                 >{t( "Reset" )}</button>
                 <button
                     onClick={() => clickHandler( 'menu' )}
-                    className='shadow-sm shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
+                    className='rounded-xl shadow-sm shadow-blue-700 w-1/4 mx-2 hover:scale-105 ease-out duration-500 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
                 >{t( "Back" )}</button>
                 <PlayingHelper
                     finished={finished}
