@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next';
-import { TutorialCarrousel } from '../../TutorialCarrousel/TutorialCarrousel'
+import TutorialCarrousel from './TutorialCarrousel'
 
-export const ComoJugar = ( { setMainDisplay, setRandomNumber, calcRandomNumber } ) => {
+const ComoJugar = ( { setMainDisplay, setRandomNumber, calcRandomNumber } ) => {
     // language
     const { t } = useTranslation();
 
@@ -85,3 +85,5 @@ export const ComoJugar = ( { setMainDisplay, setRandomNumber, calcRandomNumber }
         </div>
     )
 }
+
+export default ComoJugar

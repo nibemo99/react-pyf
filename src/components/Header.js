@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Main = ({ children }) => {
+const Header = ( { children } ) => {
     return (
         <>
             {children}
@@ -8,4 +8,4 @@ const Main = ({ children }) => {
     )
 }
 
-export { Main }
+export default Header

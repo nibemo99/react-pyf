@@ -1,14 +1,13 @@
-// INICIO
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { PlayingHelper } from '../../PlayingHelper/PlayingHelper'
-import './../Main.css'
-import { Intento } from './Intento'
-import { Intentos } from './Intentos'
+import PlayingHelper from './PlayingHelper'
+import Intento from './Intento'
+import Intentos from './Intentos'
+import '../styles/Main.css'
 
 
 
-export const PlayingScreen = ( { setMainDisplay, randomNumber, calcRandomNumber, setRandomNumber, addToLocalStorage, title, setTitle } ) => {
+const PlayingScreen = ( { setMainDisplay, randomNumber, calcRandomNumber, setRandomNumber, addToLocalStorage, title, setTitle } ) => {
     // language
     const { t } = useTranslation();
 
@@ -213,3 +212,6 @@ export const PlayingScreen = ( { setMainDisplay, randomNumber, calcRandomNumber,
         </div>
     )
 }
+
+
+export default PlayingScreen

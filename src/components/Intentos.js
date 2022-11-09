@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const Intentos = ({children}) => {
+const Intentos = ( { children } ) => {
   return (
     <div>{children}</div>
   )
 }
+
+export default Intentos

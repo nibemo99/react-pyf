@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Intento = ({ element }) => {
+const Intento = ( { element } ) => {
     return (
         <div className='grid grid-cols-3 justify-center items-center w-3/5 mx-auto my-2'>
             <p>{element.picas}</p>
@@ -9,3 +9,5 @@ export const Intento = ({ element }) => {
         </div>
     )
 }
+
+export default Intento

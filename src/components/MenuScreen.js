@@ -1,8 +1,8 @@
 import React from 'react'
 import { useTranslation } from "react-i18next";
-import './../Main.css'
+import '../styles/Main.css'
 
-export const MenuScreen = ( { setMainDisplay, calcRandomNumber, setRandomNumber, title, setTitle } ) => {
+const MenuScreen = ( { setMainDisplay, calcRandomNumber, setRandomNumber, title, setTitle } ) => {
     // language setup
     const { t, i18n } = useTranslation();
     const handleChangeLng = () => {
@@ -96,3 +96,5 @@ export const MenuScreen = ( { setMainDisplay, calcRandomNumber, setRandomNumber,
         </>
     )
 }
+
+export default MenuScreen

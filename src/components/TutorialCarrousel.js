@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next';
 
 
-export const TutorialCarrousel = ( { setMainDisplay, setRandomNumber, calcRandomNumber } ) => {
+const TutorialCarrousel = ( { setMainDisplay, setRandomNumber, calcRandomNumber } ) => {
     // language
     const { t } = useTranslation();
 
@@ -231,3 +231,6 @@ export const TutorialCarrousel = ( { setMainDisplay, setRandomNumber, calcRandom
         </div>
     )
 }
+
+
+export default TutorialCarrousel

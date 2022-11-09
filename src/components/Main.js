@@ -1,10 +1,11 @@
 import React from 'react'
 
-const Header = ({ children }) => {
+const Main = ( { children } ) => {
     return (
         <>
             {children}
         </>
     )
 }
-export { Header }
+
+export default Main

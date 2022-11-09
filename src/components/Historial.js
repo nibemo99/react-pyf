@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next';
 
-export const Historial = ( { setMainDisplay } ) => {
+const Historial = ( { setMainDisplay } ) => {
   // language
   const { t } = useTranslation();
 
@@ -124,3 +124,5 @@ export const Historial = ( { setMainDisplay } ) => {
     </div>
   )
 }
+
+export default Historial

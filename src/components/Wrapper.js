@@ -1,5 +1,5 @@
 import React from 'react'
-import './Wrapper.css'
+import '../styles/Wrapper.css'
 
 const Wrapper = ( { children } ) => {
     return (
@@ -9,4 +9,5 @@ const Wrapper = ( { children } ) => {
     )
 }
 
-export { Wrapper }
+
+export default Wrapper

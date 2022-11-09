@@ -1,12 +1,12 @@
-import './App.css';
-import { Wrapper } from './Components/Wrapper/Wrapper';
-import { Header } from './Components/Header/Header';
-import { Main } from './Components/Main/Main';
-import { MenuScreen } from './Components/Main/MenuScreen/MenuScreen';
-import { PlayingScreen } from './Components/Main/PlayingScreen/PlayingScreen';
-import { Historial } from './Components/Main/Historial/Historial'
+import './styles/App.css';
+import Wrapper from './components/Wrapper';
+import Header from './components/Header';
+import Main from './components/Main';
+import MenuScreen from './components/MenuScreen';
+import PlayingScreen from './components/PlayingScreen';
+import Historial from './components/Historial'
+import ComoJugar from './components/ComoJugar';
 import { useState } from 'react';
-import { ComoJugar } from './Components/Main/ComoJugar/ComoJugar';
 import { useTranslation } from 'react-i18next';
 
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next';
 
-export const PlayingHelper = ( { intentos, setMainDisplay, setTitle, finished, setFinished } ) => {
+const PlayingHelper = ( { intentos, setMainDisplay, setTitle, finished, setFinished } ) => {
     // language
     const { t } = useTranslation();
 
@@ -70,3 +70,5 @@ export const PlayingHelper = ( { intentos, setMainDisplay, setTitle, finished, s
         </>
     )
 }
+
+export default PlayingHelper
