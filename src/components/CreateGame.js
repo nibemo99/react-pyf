@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { NewtonsCradle } from '@uiball/loaders'
+import socket from '../utils/socket'
+import { useEffect } from 'react'
 
-const CreateGame = ( { socket, option, setOption } ) => {
+const CreateGame = ( { option, setOption } ) => {
     const [form, setForm] = useState( {
         room: '',
         name: '',
@@ -10,24 +12,42 @@ const CreateGame = ( { socket, option, setOption } ) => {
         roomCreated: ''
     } )
 
+    useEffect( () => {
+        socket.on( 'game-not-found', () => {
+            setForm( prev => ( { ...prev, state: 'game-not-found' } ) )
+            setTimeout( () => {
+                setForm( prev => ( { ...prev, state: '' } ) )
+            }, 2000 );
+        } )
 
-    socket.on( 'game-not-found', () => {
-        setForm( prev => ( { ...prev, state: 'game-not-found' } ) )
-        setTimeout( () => {
-            setForm( prev => ( { ...prev, state: '' } ) )
-        }, 2000 );
-    } )
+        socket.on( 'second-player-joined', ( data ) => {
+            setForm( prev => ( { ...prev, state: 'second-player-joined', roomCreated: data.host.gameId } ) )
+            console.log( data )
+            console.log( option )
+            setTimeout( () => {
+                if ( option === 1 ) {
+                    setOption( prev => ( { ...prev, option: 3, host: data.host, guest: data.guest } ) )
+                } else if ( option === 2 ) {
+                    setOption( prev => ( { ...prev, option: 3, host: data.host, guest: data.guest } ) )
+                } else {
+                    setOption( prev => ( { ...prev, option: 3, host: data.host, guest: data.guest } ) )
+                }
+            }, 3000 );
+        } )
 
-    socket.on( 'second-player-joined', ( data ) => {
-        setForm( prev => ( { ...prev, state: 'second-player-joined', roomCreated: data } ) )
-        setTimeout( () => {
-            setOption( prev => ( { ...prev, option: 3 } ) )
-        }, 3000 );
-    } )
+        socket.on( 'waiting', ( data ) => {
+            setForm( prev => ( { ...prev, state: 'waiting', roomCreated: data.gameId } ) )
+        } )
 
-    socket.on( 'waiting', ( data ) => {
-        setForm( prev => ( { ...prev, state: 'waiting', roomCreated: data } ) )
-    } )
+
+        return () => {
+            socket.off( 'game-not-found' )
+            socket.off( 'second-player-joined' )
+            socket.off( 'waiting' )
+        }
+    }, [] )
+
+
 
 
     let ready = Boolean( form.name.length && form.room.length && form.secret.length === 4 )

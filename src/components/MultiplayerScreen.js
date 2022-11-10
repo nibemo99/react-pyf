@@ -1,24 +1,46 @@
 import React, { useState } from 'react'
-import { io } from "socket.io-client";
 import CreateGame from './CreateGame'
 import MultBoard from './MultBoard'
+import socket from '../utils/socket'
+import { useEffect } from 'react'
 
-const MultiplayerScreen = ( { setMainDisplay } ) => {
-    const socket = io( "http://localhost:3001" );
+const MultiplayerScreen = ( { setMainDisplay, setTitle } ) => {
     const [data, setData] = useState( {
         option: 1,
-
+        host: {},
+        guest: {},
+        status: 'host'
     } )
+
+    useEffect( () => {
+        socket.on( 'user-disconected', () => {
+            setData( prev => ( { ...prev, status: 'reset' } ) )
+        } )
+
+        socket.on( 'testtt', ( data ) => {
+            console.log( data )
+        } )
+
+
+        return () => {
+            socket.off( 'user-disconected' )
+            socket.off( 'testtt' )
+        }
+    }, [] )
+
+
+
 
     const changeHandler = ( event ) => {
         const value = event.target.innerText
-        console.log( value )
-        if ( value === 'Create' ) setData( prev => ( { ...prev, option: 1 } ) )
-        if ( value === 'Join' ) setData( prev => ( { ...prev, option: 2 } ) )
+        if ( value === 'Create' ) setData( prev => ( { ...prev, option: 1, status: 'host' } ) )
+        if ( value === 'Join' ) setData( prev => ( { ...prev, option: 2, status: 'guest' } ) )
+        console.log( data.option )
     }
 
     const handleBack = () => {
         setMainDisplay( 'menu' )
+        // socket.emit( 'test', '' )
     }
 
     return (
@@ -34,13 +56,17 @@ const MultiplayerScreen = ( { setMainDisplay } ) => {
                         <button className='p-4 text-xl cursor-pointer' onClick={changeHandler}>Create</button>
                         <button className='p-4 text-xl cursor-pointer' onClick={changeHandler}>Join</button>
                     </div>
-                    <CreateGame socket={socket} option={data.option} setOption={setData} />
+                    <CreateGame option={data.option} setOption={setData} />
                 </>
             ) : (
                 <>
-                    <MultBoard socket={socket} data={data} />
+                    <MultBoard
+                        data={data}
+                        setTitle={setTitle}
+                    />
                 </>
             )}
+            {data.status === 'reset' && ( 'se ha desconectado usuario' )}
 
         </div>
     )

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import PlayingHelper from './PlayingHelper'
 import Intento from './Intento'
-import Intentos from './Intentos'
 import '../styles/Main.css'
 
 
@@ -157,16 +156,9 @@ const PlayingScreen = ( { setMainDisplay, randomNumber, calcRandomNumber, setRan
                 <p>Fijas</p>
             </div>
 
-            <Intentos>
-                <div className=' '>
-                    {
-                        intentos.map( ( element, index ) => {
-                            return <Intento key={index} element={element} />
-                        } )
-                    }
-
-                </div>
-            </Intentos>
+            {intentos.map( ( element, index ) => {
+                return <Intento key={index} element={element} />
+            } )}
             {( !finished[0] ) ? (
                 <div
                     className='flex flex-col items-center justify-center'
