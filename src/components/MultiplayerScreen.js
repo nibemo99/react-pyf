@@ -56,7 +56,7 @@ const MultiplayerScreen = ( { setMainDisplay, setTitle } ) => {
                         <button className='p-4 text-xl cursor-pointer' onClick={changeHandler}>Create</button>
                         <button className='p-4 text-xl cursor-pointer' onClick={changeHandler}>Join</button>
                     </div>
-                    <CreateGame option={data.option} setOption={setData} />
+                    <CreateGame key={data.option} option={data.option} setOption={setData} />
                 </>
             ) : (
                 <>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NewtonsCradle } from '@uiball/loaders'
+import { NewtonsCradle, Orbit } from '@uiball/loaders'
 import socket from '../utils/socket'
 import { useEffect } from 'react'
 
@@ -25,6 +25,15 @@ const CreateGame = ( { option, setOption } ) => {
             console.log( data )
             console.log( option )
             setTimeout( () => {
+                setForm( prev => ( { ...prev, state: 'second-player-joined-3' } ) )
+            }, 2000 );
+            setTimeout( () => {
+                setForm( prev => ( { ...prev, state: 'second-player-joined-2' } ) )
+            }, 3000 );
+            setTimeout( () => {
+                setForm( prev => ( { ...prev, state: 'second-player-joined-1' } ) )
+            }, 4000 );
+            setTimeout( () => {
                 if ( option === 1 ) {
                     setOption( prev => ( { ...prev, option: 3, host: data.host, guest: data.guest } ) )
                 } else if ( option === 2 ) {
@@ -32,7 +41,7 @@ const CreateGame = ( { option, setOption } ) => {
                 } else {
                     setOption( prev => ( { ...prev, option: 3, host: data.host, guest: data.guest } ) )
                 }
-            }, 3000 );
+            }, 5000 );
         } )
 
         socket.on( 'waiting', ( data ) => {
@@ -50,7 +59,8 @@ const CreateGame = ( { option, setOption } ) => {
 
 
 
-    let ready = Boolean( form.name.length && form.room.length && form.secret.length === 4 )
+    let ready = Boolean( ( option === 1 ) ? ( form.name.length && form.secret.length === 4 ) : ( option === 2 ) ? ( form.room.length && form.name.length && form.secret.length === 4 ) : '' )
+
 
     const checkSecret = ( e, name ) => {
         let value = e.target.value
@@ -112,6 +122,7 @@ const CreateGame = ( { option, setOption } ) => {
         if ( name === 'room' ) checkRoom( e, name )
     }
     const handleSubmit = ( event ) => {
+        if ( !ready ) return
         if ( option === 1 ) {
             socket.emit( 'createMatch', form )
         } else {
@@ -154,7 +165,10 @@ const CreateGame = ( { option, setOption } ) => {
                 {( !form.state && option === 1 ) ? 'Create' : ''}
                 {( !form.state && option === 2 ) ? 'Join' : ''}
                 {( form.state === 'waiting' ) ? 'Created!' : ''}
-                {( form.state === 'second-player-joined' ) ? 'Loading' : ''}
+                {( form.state === 'second-player-joined' ) ? ( 'Loading' ) : ''}
+                {( form.state === 'second-player-joined-3' ) ? ( '3' ) : ''}
+                {( form.state === 'second-player-joined-2' ) ? ( '2' ) : ''}
+                {( form.state === 'second-player-joined-1' ) ? ( '1' ) : ''}
                 {( form.state === 'game-not-found' ) ? 'Game does not exist' : ''}
             </button>
             {( form.state === 'waiting' ) ? (
@@ -168,10 +182,11 @@ const CreateGame = ( { option, setOption } ) => {
                     />
                 </>
             ) : ''}
-            {( form.state === 'second-player-joined' ) ? (
+            {( form.state.includes( 'second-player-joined' ) ) ? (
                 <>
-                    <p className='text-lg'>Room ID: <strong>{form.roomCreated}</strong></p>
-                    <p className='text-lg'>Ready to play ✅</p>
+                    <Orbit />
+                    {/* <p className='text-lg'>Room ID: <strong>{form.roomCreated}</strong></p>
+                    <p className='text-lg'>Ready to play ✅</p> */}
                 </>
             ) : ''}
 

@@ -55,6 +55,12 @@ const MenuScreen = ( { setMainDisplay, calcRandomNumber, setRandomNumber, title,
                     {t( "New game" )}
                 </button>
                 <button
+                    onClick={() => clickHandler( 'multiplayer' )}
+                    className='w-2/3 py-4 rounded-xl shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500'
+                >
+                    {t( "Multiplayer" )}
+                </button>
+                <button
                     onClick={() => clickHandler( 'hist' )}
                     className='w-2/3 py-4 rounded-xl shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500'
                 >
@@ -65,12 +71,6 @@ const MenuScreen = ( { setMainDisplay, calcRandomNumber, setRandomNumber, title,
                     className='w-2/3 py-4 rounded-xl shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500'
                 >
                     {t( "How to play" )}
-                </button>
-                <button
-                    onClick={() => clickHandler( 'multiplayer' )}
-                    className='w-2/3 py-4 rounded-xl shadow-sm shadow-blue-700 hover:bg-blue-700 hover:text-white hover:scale-105 focus:bg-blue-700 focus:text-white focus:scale-105 ease-out duration-500'
-                >
-                    {t( "Multiplayer" )}
                 </button>
 
             </div>
