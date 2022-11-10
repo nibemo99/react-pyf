@@ -27,9 +27,9 @@ const MultBoard = ( { data, setTitle } ) => {
         if ( guess.fijas === 4 ) {
             setIntentos( prev => ( { ...prev, winner: data[rol].name } ) )
             if ( rol === data.status ) {
-                setTitle( 'You won!' )
+                setTitle( 'You win!' )
             } else {
-                setTitle( `${data[rol].name} won!` )
+                setTitle( `${data[rol].name} wins!` )
             }
         }
     }
