@@ -67,7 +67,6 @@ const MultiplayerScreen = ( { setMainDisplay, setTitle } ) => {
                 </>
             )}
             {data.status === 'reset' && ( 'se ha desconectado usuario' )}
-
         </div>
     )
 }

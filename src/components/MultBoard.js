@@ -15,25 +15,29 @@ const MultBoard = ( { data, setTitle } ) => {
     } )
 
     useEffect( () => {
-        socket.on( 'oponent-guess', ( res ) => {
-            console.count( res )
-            const { guess, rol } = res
-            setIntentos( prev => ( { ...prev, [rol]: [...prev[rol], guess] } ) )
-            if ( guess.fijas === 4 ) {
-                setIntentos( prev => ( { ...prev, winner: data[rol].name } ) )
-                addToLocalStorage()
-                if ( rol === data.status ) {
-                    setTitle( 'You won!' )
-                } else {
-                    setTitle( `${data[rol].name} won!` )
-                }
-            }
-        } )
+        socket.on( 'oponent-guess', receiveGuess )
         return () => {
             socket.off( 'oponent-guess' )
         }
     }, [] )
 
+    const receiveGuess = ( res ) => {
+        const { guess, rol } = res
+        setIntentos( prev => ( { ...prev, [rol]: [...prev[rol], guess] } ) )
+        if ( guess.fijas === 4 ) {
+            setIntentos( prev => ( { ...prev, winner: data[rol].name } ) )
+            if ( rol === data.status ) {
+                setTitle( 'You won!' )
+            } else {
+                setTitle( `${data[rol].name} won!` )
+            }
+        }
+    }
+
+    const arrFn = ( e ) => {
+        if ( !intentos.winner ) return
+        addToLocalStorage()
+    }
 
     const checkSecret = ( e ) => {
         if ( intentos.winner ) return setIntentos( prev => ( { ...prev, current: '' } ) )
@@ -72,14 +76,15 @@ const MultBoard = ( { data, setTitle } ) => {
         let ENTER_KEY = 13
         let inputValue = intentos.current
         if ( e.keyCode === ENTER_KEY || e.type === 'click' ) {
-            // si la longitud es distinta de 4
             if ( inputValue.length !== 4 ) return
-            getResult( inputValue, data.status )
+            const [picas, fijas] = getResult( inputValue, data.status )
+            let guess = { numero: inputValue, picas, fijas }
+            socket.emit( 'send-guess', { guess, userId: data[data.status].userId } )
+            setIntentos( prev => ( { ...prev, current: '' } ) )
         }
     }
 
     const getResult = ( e, who ) => {
-        // console.log(e, typeof (e));
         let randomNumber = 0
         if ( who === 'host' ) {
             randomNumber = data['guest'].secret
@@ -102,9 +107,7 @@ const MultBoard = ( { data, setTitle } ) => {
                 }
             }
         }
-        let guess = { numero: e, picas, fijas }
-        socket.emit( 'send-guess', { guess, userId: data[data.status].userId } )
-        setIntentos( prev => ( { ...prev, current: '' } ) )
+        return [picas, fijas]
     }
 
     const addToLocalStorage = () => {
@@ -142,6 +145,7 @@ const MultBoard = ( { data, setTitle } ) => {
                     <p>Number</p>
                     <p>Fijas</p>
                 </div>
+                {arrFn( 'hey' )}
                 {intentos.host.map( ( element, index ) => {
                     return <Intento key={index} element={element} multi={true} />
                 } )}
