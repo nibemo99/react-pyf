@@ -169,7 +169,7 @@ const MultBoard = ( { data, setTitle } ) => {
                         </div>
                     </>
                 ) : null}
-                {data.status === 'host' && !intentos.winner ? (
+                {data.status === 'guest' && !intentos.winner ? (
                     <>
                         <div className='flex flex-col items-center justify-center pt-4' >
                             <DotWave size={47} speed={2} />
@@ -211,7 +211,7 @@ const MultBoard = ( { data, setTitle } ) => {
                         </div>
                     </>
                 ) : null}
-                {data.status === 'guest' && !intentos.winner ? (
+                {data.status === 'host' && !intentos.winner ? (
                     <>
                         <div className='flex flex-col items-center justify-center pt-4' >
                             <DotWave size={47} speed={2} />
