@@ -45,6 +45,7 @@ const Historial = ( { setMainDisplay } ) => {
       {/* SI RENDERLISTA === 0, renderiza toda la lista */}
       {( renderLista === 0 ) && (
         <div className='flex flex-col'>
+
           {( parsedHistory.length === 0 ) && (
             <>
               <p className='mx-auto w-2/3 py-3 animate-wiggle' >¡Ups!</p>
@@ -61,16 +62,32 @@ const Historial = ( { setMainDisplay } ) => {
                   onClick={() => { setRenderLista( index + 1 ) }}
                   className='rounded-xl py-1 mx-5 my-2 hover:scale-105 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md  hover:shadow-blue-700 focus:shadow-blue-700 focus:shadow-md focus:scale-105'
                 >
-
-                  <p className={`text-2xl tracking-widest hover:scale-110 ease-in-out duration-500 w-fit mx-auto ${( index === 0 ) ? 'animate-wiggle' : ''}`}
-                  >
-                    {element.data[element.data.length - 1].numero}
-                  </p>
-
-                  <div className='flex flex-col gap-1 justify-between'>
-                    <p className='text-gray-500 hover:text-blue-700 ease-in-out duration-500' >{element.date}</p>
-                    <p>{t( "Round" )}s: {element.data.length}</p>
-                  </div>
+                  {( isNaN( element.data.length ) ) ? (
+                    <>
+                      <p className={`text-xl hover:scale-110 ease-in-out duration-500 w-fit mx-auto ${( index === 0 ) ? 'animate-wiggle' : ''}`}
+                      >
+                        {element.data.meName} <strong> vs </strong> {element.data.oponentName}
+                      </p>
+                      <div className='flex flex-col gap-1 justify-between'>
+                        <p className='text-gray-500 hover:text-blue-700 ease-in-out duration-500' >{element.date}</p>
+                        <p className={`${( element.data.me[element.data.me.length - 1]?.fijas === 4 ) ? 'text-lime-500' : 'text-rose-500'}`}>
+                          {t( "Round" )}s:
+                          {( element.data.me[element.data.me.length - 1]?.fijas === 4 ) ? ( element.data.me.length ) : ( element.data.oponent.length )}
+                        </p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <p className={`text-xl tracking-widest hover:scale-110 ease-in-out duration-500 w-fit mx-auto ${( index === 0 ) ? 'animate-wiggle' : ''}`}
+                      >
+                        {element.data[element.data.length - 1].numero}
+                      </p>
+                      <div className='flex flex-col gap-1 justify-between'>
+                        <p className='text-gray-500 hover:text-blue-700 ease-in-out duration-500' >{element.date}</p>
+                        <p>{t( "Round" )}s: {element.data.length}</p>
+                      </div>
+                    </>
+                  )}
                 </button>
               )
 
@@ -92,17 +109,15 @@ const Historial = ( { setMainDisplay } ) => {
             <p className='bg-blue-200 text-lg'>{t( "Number" )}</p>
             <p className='bg-blue-200 text-lg'>Fijas</p>
 
-            {
-              parsedHistory[renderLista - 1].data.map( ( e, i, a ) => {
-                return (
-                  <>
-                    <p className='py-[2px]' key={`${e.picas}p`}>{e.picas}</p>
-                    <p className={`py-[2px] ${( i === a.length - 1 ) ? 'animate-colorChange' : ''}`} key={`${e.numero}n`}>{e.numero}</p>
-                    <p className='py-[2px]' key={`${e.fijas}f`}>{e.fijas}</p>
-                  </>
-                )
-              } )
-            }
+            {parsedHistory[renderLista - 1].data.map( ( e, i, a ) => {
+              return (
+                <>
+                  <p className='py-[2px]' key={`${e.picas}p`}>{e.picas}</p>
+                  <p className={`py-[2px] ${( i === a.length - 1 ) ? 'animate-colorChange' : ''}`} key={`${e.numero}n`}>{e.numero}</p>
+                  <p className='py-[2px]' key={`${e.fijas}f`}>{e.fijas}</p>
+                </>
+              )
+            } )}
 
           </div>
           <button

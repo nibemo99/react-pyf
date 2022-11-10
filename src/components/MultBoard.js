@@ -21,19 +21,7 @@ const MultBoard = ( { data, setTitle } ) => {
             setIntentos( prev => ( { ...prev, [rol]: [...prev[rol], guess] } ) )
             if ( guess.fijas === 4 ) {
                 setIntentos( prev => ( { ...prev, winner: data[rol].name } ) )
-                let temp
-                if ( data.status === 'host' ) {
-                    temp = 'guest'
-                } else {
-                    temp = 'host'
-                }
-                let dataa = {
-                    me: intentos[data.status],
-                    oponent: intentos[temp],
-                    meName: data[data.status].name,
-                    oponentName: data[temp].name
-                }
-                addToLocalStorage( dataa, true )
+                addToLocalStorage()
                 if ( rol === data.status ) {
                     setTitle( 'You won!' )
                 } else {
@@ -119,15 +107,28 @@ const MultBoard = ( { data, setTitle } ) => {
         setIntentos( prev => ( { ...prev, current: '' } ) )
     }
 
-    const addToLocalStorage = ( dataa, status ) => {
+    const addToLocalStorage = () => {
+        let aux
+        if ( data.status === 'host' ) {
+            aux = 'guest'
+        } else {
+            aux = 'host'
+        }
+        let dataa = {
+            me: intentos[data.status],
+            oponent: intentos[aux],
+            meName: data[data.status].name,
+            oponentName: data[aux].name,
+        }
+
         let date = new Date()
-        date.toDateString()
+        date = date.toDateString()
         if ( localStorage.historial === undefined ) localStorage.historial = JSON.stringify( [] )
         let temp = JSON.parse( localStorage.historial )
         temp.push( {
             date: `${date}`,
             data: dataa,
-            completed: status,
+            completed: true,
         } )
         localStorage.historial = JSON.stringify( temp )
     }
