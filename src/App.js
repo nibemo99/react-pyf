@@ -8,12 +8,17 @@ import Historial from './components/Historial'
 import ComoJugar from './components/ComoJugar';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import MultiplayerScreen from './components/MultiplayerScreen';
+import socket from './utils/socket'
 
 
 
 function App () {
   // language
   const { t } = useTranslation();
+
+  // socket.io
+  // const socket = io( "http://localhost:3001", { autoConnect: false } );
 
   // useStatesss
   const [mainDisplay, setMainDisplay] = useState( 'menu' )
@@ -97,6 +102,12 @@ function App () {
               setRandomNumber={setRandomNumber}
               calcRandomNumber={calcRandomNumber}
               setMainDisplay={setMainDisplay}
+            />}
+          {( mainDisplay === 'multiplayer' ) &&
+            <MultiplayerScreen
+              setMainDisplay={setMainDisplay}
+              setTitle={setTitle}
+              socket={socket}
             />}
 
 
