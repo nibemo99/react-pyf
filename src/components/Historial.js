@@ -37,7 +37,7 @@ const Historial = ( { setMainDisplay } ) => {
 
 
   return (
-    <div className={` w-4/5 mx-auto mb-10 flex flex-col overflow-auto no-scrollbar ${( renderLista === 0 ) ? 'h-[450px]' : ''}`}>
+    <div className={` w-full mx-auto mb-10 flex flex-col overflow-auto no-scrollbar ${( renderLista === 0 ) ? 'h-[450px]' : ''}`}>
       <button
         onClick={clickHandler}
         className='rounded-xl shadow-sm shadow-blue-700 py-4 mx-auto my-4 w-1/2 hover:bg-blue-700 hover:text-white hover:scale-105 ease-out duration-500 focus:bg-blue-700 focus:text-white focus:scale-105'
