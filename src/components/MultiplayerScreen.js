@@ -36,9 +36,9 @@ const MultiplayerScreen = ( { setMainDisplay, setTitle } ) => {
 
 
     const changeHandler = ( event ) => {
-        const value = event.target.innerText
-        if ( value === 'Create' ) setData( prev => ( { ...prev, option: 1, status: 'host' } ) )
-        if ( value === 'Join' ) setData( prev => ( { ...prev, option: 2, status: 'guest' } ) )
+        const value = event.target.name
+        if ( value === 'create' ) setData( prev => ( { ...prev, option: 1, status: 'host' } ) )
+        if ( value === 'join' ) setData( prev => ( { ...prev, option: 2, status: 'guest' } ) )
         console.log( data.option )
     }
 
@@ -57,9 +57,20 @@ const MultiplayerScreen = ( { setMainDisplay, setTitle } ) => {
             {( data.option < 3 ) ? (
                 <>
                     <div className='relative flex w-full justify-evenly mt-5'>
-                        {/* <div className={` absolute transition-all duration-500 bottom-2 rounded-xl left-[7.9rem] w-16 h-1 bg-rose-700  ${( data.option === 2 ) ? 'left-[20.2rem] w-12' : ''}`} /> */}
-                        <button className={`px-4 my-4 text-xl cursor-pointer relative transition-all duration-500 before:absolute before:-bottom-1 before:right-0 before:left-0 before:bg-red-500 before:rounded-xl before:transition-all before:duration-300 ${( data.option === 1 ) ? 'before:h-[4px]' : 'before:h-[0px] text-gray-400'}`} onClick={changeHandler}>{t( `Create` )}</button>
-                        <button className={`px-4 my-4 text-xl cursor-pointer relative transition-all duration-500 before:absolute before:-bottom-1 before:right-0 before:left-0 before:bg-red-500 before:rounded-xl before:transition-all before:duration-300 ${( data.option === 2 ) ? 'before:h-[4px]' : 'before:h-[0px] text-gray-400'}`} onClick={changeHandler}>{t( `Join` )}</button>
+                        <button
+                            className={`px-4 my-4 text-xl cursor-pointer relative transition-all duration-500 before:absolute before:-bottom-1 before:right-0 before:left-0 before:bg-red-500 before:rounded-xl before:transition-all before:duration-300 ${( data.option === 1 ) ? 'before:h-[4px]' : 'before:h-[0px] text-gray-400'}`}
+                            onClick={changeHandler}
+                            name='create'
+                        >
+                            {t( `Create` )}
+                        </button>
+                        <button
+                            className={`px-4 my-4 text-xl cursor-pointer relative transition-all duration-500 before:absolute before:-bottom-1 before:right-0 before:left-0 before:bg-red-500 before:rounded-xl before:transition-all before:duration-300 ${( data.option === 2 ) ? 'before:h-[4px]' : 'before:h-[0px] text-gray-400'}`}
+                            onClick={changeHandler}
+                            name='join'
+                        >
+                            {t( `Join` )}
+                        </button>
                     </div>
                     <CreateGame key={data.option} option={data.option} setOption={setData} />
                 </>

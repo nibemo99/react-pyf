@@ -3,8 +3,12 @@ import { NewtonsCradle, Orbit } from '@uiball/loaders'
 import socket from '../utils/socket'
 import { useEffect } from 'react'
 import { success, whosh } from '../utils/audios'
+import { useTranslation } from 'react-i18next'
 
 const CreateGame = ( { option, setOption } ) => {
+
+    const { t } = useTranslation();
+
     const [form, setForm] = useState( {
         room: '',
         name: '',
@@ -139,7 +143,7 @@ const CreateGame = ( { option, setOption } ) => {
                 <input
                     type='text'
                     className='border-2 border-x-0 border-t-0 border-rose-300 bg-transparent text-center m-4 w-1/2 text-2xl'
-                    placeholder='Game ID'
+                    placeholder={t( 'Game ID' )}
                     name='room'
                     value={form.room}
                     onChange={handleChange}
@@ -148,7 +152,7 @@ const CreateGame = ( { option, setOption } ) => {
             <input
                 type='text'
                 className='border-2 border-x-0 border-t-0 border-rose-300 bg-transparent text-center m-4 w-1/2 text-2xl'
-                placeholder='Name'
+                placeholder={t( 'Name' )}
                 name='name'
                 value={form.name}
                 onChange={handleChange}
@@ -156,7 +160,7 @@ const CreateGame = ( { option, setOption } ) => {
             <input
                 type='text'
                 className='border-2 border-x-0 border-t-0 border-rose-300 bg-transparent text-center m-4 w-1/2 text-2xl'
-                placeholder='Secret number'
+                placeholder={t( 'Secret number' )}
                 name='secret'
                 value={form.secret}
                 onChange={handleChange}
@@ -165,19 +169,19 @@ const CreateGame = ( { option, setOption } ) => {
                 className={`text-2xl rounded-xl px-2 py-2 my-3 w-1/2 hover:scale-105 ease-out duration-500  focus:scale-105 ${( ready ) ? 'shadow-md shadow-rose-700 hover:bg-rose-700 focus:bg-rose-700 hover:text-white focus:text-white text-black' : 'shadow-sm shadow-gray-700 text-gray-400'}`}
                 onClick={handleSubmit}
             >
-                {( !form.state && option === 1 ) ? 'Create game' : ''}
-                {( !form.state && option === 2 ) ? 'Join game' : ''}
-                {( form.state === 'waiting' ) ? 'Created!' : ''}
-                {( form.state === 'second-player-joined' ) ? ( 'Loading' ) : ''}
+                {( !form.state && option === 1 ) ? ( t( 'Create game' ) ) : ''}
+                {( !form.state && option === 2 ) ? ( t( 'Join game' ) ) : ''}
+                {( form.state === 'waiting' ) ? ( t( 'Created!' ) ) : ''}
+                {( form.state === 'second-player-joined' ) ? ( t( 'Loading' ) ) : ''}
                 {( form.state === 'second-player-joined-3' ) ? ( '3' ) : ''}
                 {( form.state === 'second-player-joined-2' ) ? ( '2' ) : ''}
                 {( form.state === 'second-player-joined-1' ) ? ( '1' ) : ''}
-                {( form.state === 'game-not-found' ) ? 'Game does not exist' : ''}
+                {( form.state === 'game-not-found' ) ? ( t( 'Game does not exist' ) ) : ''}
             </button>
             {( form.state === 'waiting' ) ? (
                 <>
-                    <p className='text-lg'>Game ID: <strong>{form.roomCreated}</strong></p>
-                    <p className='text-lg'>Waiting oponent</p>
+                    <p className='text-lg'>{t( 'Game ID' )}: <strong>{form.roomCreated}</strong></p>
+                    <p className='text-lg'>{t( 'Waiting oponent' )}</p>
                     <NewtonsCradle
                         size={40}
                         speed={2}
@@ -188,8 +192,6 @@ const CreateGame = ( { option, setOption } ) => {
             {( form.state.includes( 'second-player-joined' ) ) ? (
                 <>
                     <Orbit />
-                    {/* <p className='text-lg'>Room ID: <strong>{form.roomCreated}</strong></p>
-                    <p className='text-lg'>Ready to play ✅</p> */}
                 </>
             ) : ''}
 

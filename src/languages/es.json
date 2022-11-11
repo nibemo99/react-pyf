@@ -52,5 +52,19 @@
   "Return": "Volver",
   "Delete": "Eliminar",
   "Sure?": "¿Definitivo?",
-  "Deleted!": "¡Eliminado!"
+  "Deleted!": "¡Eliminado!",
+
+  "Create": "Crear",
+  "Join": "Unirse",
+  "Game ID": "Juego ID",
+  "Name": "Nombre",
+  "Secret number": "Número secreto",
+  "Create game": "Crear juego",
+  "Join game": "Unirse al juego",
+  "Created!": "Creado!",
+  "Loading": "Cargando",
+  "Game does not exist": "Juego no existe",
+  "Waiting oponent": "Esperando oponente",
+  "You win!": "¡Ganaste!",
+  "wins!": "ganó"
 }

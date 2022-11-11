@@ -53,5 +53,19 @@
   "Return": "Return",
   "Delete": "Delete",
   "Sure?": "Sure?",
-  "Deleted!": "Deleted!"
+  "Deleted!": "Deleted!",
+
+  "Create": "Create",
+  "Join": "Join",
+  "Game ID": "Game ID",
+  "Name": "Name",
+  "Secret number": "Secret number",
+  "Create game": "Create game",
+  "Join game": "Join game",
+  "Created!": "Created!",
+  "Loading": "Loading",
+  "Game does not exist": "Game does not exist",
+  "Waiting oponent": "Waiting oponent",
+  "You win!": "You win!",
+  "wins!": "wins!"
 }

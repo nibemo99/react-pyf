@@ -4,8 +4,11 @@ import Intento from './Intento'
 import socket from '../utils/socket'
 import { useEffect } from 'react'
 import { DotWave } from '@uiball/loaders'
+import { useTranslation } from 'react-i18next'
 
 const MultBoard = ( { data, setTitle } ) => {
+
+    const { t } = useTranslation();
 
     const [intentos, setIntentos] = useState( {
         host: [],
@@ -27,9 +30,9 @@ const MultBoard = ( { data, setTitle } ) => {
         if ( guess.fijas === 4 ) {
             setIntentos( prev => ( { ...prev, winner: data[rol].name } ) )
             if ( rol === data.status ) {
-                setTitle( 'You win!' )
+                setTitle( t( 'You win!' ) )
             } else {
-                setTitle( `${data[rol].name} wins!` )
+                setTitle( `${data[rol].name} ${t( 'wins!' )}` )
             }
         }
     }
@@ -142,7 +145,7 @@ const MultBoard = ( { data, setTitle } ) => {
                 <p className={` ${( data.host.name === intentos.winner ) ? 'text-2xl font-bold animate-wiggle animate-colorChange' : 'text-2xl'}`}>{data.host.name}</p>
                 <div className='grid grid-cols-3 mx-auto bg-blue-300 my-1 text-lg'>
                     <p>Picas</p>
-                    <p>Number</p>
+                    <p>{t( 'Number' )}</p>
                     <p>Fijas</p>
                 </div>
                 {arrFn( 'hey' )}
@@ -185,7 +188,7 @@ const MultBoard = ( { data, setTitle } ) => {
                 <p className={`${( data.guest.name === intentos.winner ) ? 'text-2xl font-bold animate-wiggle animate-colorChange' : 'text-2xl'}`} >{data.guest.name}</p>
                 <div className='grid grid-cols-3 mx-auto bg-blue-300 my-1 text-lg'>
                     <p>Picas</p>
-                    <p>Number</p>
+                    <p>{t( 'Number' )}</p>
                     <p>Fijas</p>
                 </div>
                 {intentos.guest.map( ( element, index ) => {
