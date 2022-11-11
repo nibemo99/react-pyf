@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import Intento from './Intento'
 import gifs from '../utils/gifs'
 import socket from '../utils/socket'
-import { claps, buzzer } from '../utils/audios'
+import { claps, buzzer, whosh } from '../utils/audios'
 
 const MultBoard = ( { data, setTitle } ) => {
 
@@ -88,6 +88,7 @@ const MultBoard = ( { data, setTitle } ) => {
             if ( inputValue.length !== 4 ) return
             const [picas, fijas] = getResult( inputValue, data.status )
             let guess = { numero: inputValue, picas, fijas }
+            whosh.play()
             socket.emit( 'send-guess', { guess, userId: data[data.status].userId } )
             setIntentos( prev => ( { ...prev, current: '' } ) )
         }

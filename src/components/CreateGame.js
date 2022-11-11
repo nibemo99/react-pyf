@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { NewtonsCradle, Orbit } from '@uiball/loaders'
 import socket from '../utils/socket'
 import { useEffect } from 'react'
-import { success, whosh } from '../utils/audios'
+import { buzzer, success, whosh } from '../utils/audios'
 import { useTranslation } from 'react-i18next'
 
 const CreateGame = ( { option, setOption } ) => {
@@ -31,16 +31,19 @@ const CreateGame = ( { option, setOption } ) => {
             // console.log( option )
             success.play()
             setTimeout( () => {
+                whosh.play()
                 setForm( prev => ( { ...prev, state: 'second-player-joined-3' } ) )
-            }, 2000 );
-            setTimeout( () => {
-                setForm( prev => ( { ...prev, state: 'second-player-joined-2' } ) )
-            }, 3000 );
-            setTimeout( () => {
-                setForm( prev => ( { ...prev, state: 'second-player-joined-1' } ) )
             }, 4000 );
             setTimeout( () => {
                 whosh.play()
+                setForm( prev => ( { ...prev, state: 'second-player-joined-2' } ) )
+            }, 5000 );
+            setTimeout( () => {
+                whosh.play()
+                setForm( prev => ( { ...prev, state: 'second-player-joined-1' } ) )
+            }, 6000 );
+            setTimeout( () => {
+                buzzer.play()
                 if ( option === 1 ) {
                     setOption( prev => ( { ...prev, option: 3, host: data.host, guest: data.guest } ) )
                 } else if ( option === 2 ) {
@@ -48,7 +51,7 @@ const CreateGame = ( { option, setOption } ) => {
                 } else {
                     setOption( prev => ( { ...prev, option: 3, host: data.host, guest: data.guest } ) )
                 }
-            }, 5000 );
+            }, 7000 );
         } )
 
         socket.on( 'waiting', ( data ) => {
