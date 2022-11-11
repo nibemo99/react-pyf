@@ -1,11 +1,10 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { DotWave } from '@uiball/loaders'
+import { useTranslation } from 'react-i18next'
 import Intento from './Intento'
 import gifs from '../utils/gifs'
 import socket from '../utils/socket'
-import { useEffect } from 'react'
-import { DotWave } from '@uiball/loaders'
-import { useTranslation } from 'react-i18next'
+import { claps, buzzer } from '../utils/audios'
 
 const MultBoard = ( { data, setTitle } ) => {
 
@@ -33,9 +32,11 @@ const MultBoard = ( { data, setTitle } ) => {
             let temp = ''
             if ( rol === data.status ) {
                 setTitle( t( 'You win!' ) )
+                claps.play()
                 temp = 'truee'
             } else {
                 setTitle( `${data[rol].name} ${t( 'wins!' )}` )
+                buzzer.play()
                 temp = 'falsee'
             }
             setIntentos( prev => ( { ...prev, winner: data[rol].name, won: temp } ) )

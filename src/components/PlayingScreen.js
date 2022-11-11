@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import PlayingHelper from './PlayingHelper'
 import Intento from './Intento'
 import '../styles/Main.css'
+import { claps } from '../utils/audios'
 
 
 
@@ -126,6 +127,7 @@ const PlayingScreen = ( { setMainDisplay, randomNumber, calcRandomNumber, setRan
             let date = bringDate()
             addToLocalStorage( [...intentos, temp,], date, true )
             setTitle( `${t( "Congratulations!" )}` )
+            claps.play()
             setFinished( [1, 'true'] )
         }
     }
