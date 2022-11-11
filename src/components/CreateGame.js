@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { NewtonsCradle, Orbit } from '@uiball/loaders'
 import socket from '../utils/socket'
 import { useEffect } from 'react'
+import { success, whosh } from '../utils/audios'
 
 const CreateGame = ( { option, setOption } ) => {
     const [form, setForm] = useState( {
@@ -22,8 +23,9 @@ const CreateGame = ( { option, setOption } ) => {
 
         socket.on( 'second-player-joined', ( data ) => {
             setForm( prev => ( { ...prev, state: 'second-player-joined', roomCreated: data.host.gameId } ) )
-            console.log( data )
-            console.log( option )
+            // console.log( data )
+            // console.log( option )
+            success.play()
             setTimeout( () => {
                 setForm( prev => ( { ...prev, state: 'second-player-joined-3' } ) )
             }, 2000 );
@@ -34,6 +36,7 @@ const CreateGame = ( { option, setOption } ) => {
                 setForm( prev => ( { ...prev, state: 'second-player-joined-1' } ) )
             }, 4000 );
             setTimeout( () => {
+                whosh.play()
                 if ( option === 1 ) {
                     setOption( prev => ( { ...prev, option: 3, host: data.host, guest: data.guest } ) )
                 } else if ( option === 2 ) {
