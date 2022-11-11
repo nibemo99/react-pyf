@@ -139,7 +139,7 @@ const CreateGame = ( { option, setOption } ) => {
                 <input
                     type='text'
                     className='border-2 border-x-0 border-t-0 border-rose-300 bg-transparent text-center m-4 w-1/2 text-2xl'
-                    placeholder='Room ID'
+                    placeholder='Game ID'
                     name='room'
                     value={form.room}
                     onChange={handleChange}
@@ -148,7 +148,7 @@ const CreateGame = ( { option, setOption } ) => {
             <input
                 type='text'
                 className='border-2 border-x-0 border-t-0 border-rose-300 bg-transparent text-center m-4 w-1/2 text-2xl'
-                placeholder='Your name'
+                placeholder='Name'
                 name='name'
                 value={form.name}
                 onChange={handleChange}
@@ -156,17 +156,17 @@ const CreateGame = ( { option, setOption } ) => {
             <input
                 type='text'
                 className='border-2 border-x-0 border-t-0 border-rose-300 bg-transparent text-center m-4 w-1/2 text-2xl'
-                placeholder='Your secret number'
+                placeholder='Secret number'
                 name='secret'
                 value={form.secret}
                 onChange={handleChange}
             />
             <button
-                className={`text-2xl rounded-xl px-2 py-2 my-3 w-1/2 hover:scale-105 ease-out duration-500  focus:scale-105 ${( ready ) ? 'shadow-md shadow-rose-700 hover:bg-rose-700 focus:bg-rose-700 hover:text-white focus:text-white' : 'shadow-sm shadow-gray-700'}`}
+                className={`text-2xl rounded-xl px-2 py-2 my-3 w-1/2 hover:scale-105 ease-out duration-500  focus:scale-105 ${( ready ) ? 'shadow-md shadow-rose-700 hover:bg-rose-700 focus:bg-rose-700 hover:text-white focus:text-white text-black' : 'shadow-sm shadow-gray-700 text-gray-400'}`}
                 onClick={handleSubmit}
             >
-                {( !form.state && option === 1 ) ? 'Create' : ''}
-                {( !form.state && option === 2 ) ? 'Join' : ''}
+                {( !form.state && option === 1 ) ? 'Create game' : ''}
+                {( !form.state && option === 2 ) ? 'Join game' : ''}
                 {( form.state === 'waiting' ) ? 'Created!' : ''}
                 {( form.state === 'second-player-joined' ) ? ( 'Loading' ) : ''}
                 {( form.state === 'second-player-joined-3' ) ? ( '3' ) : ''}
@@ -176,7 +176,7 @@ const CreateGame = ( { option, setOption } ) => {
             </button>
             {( form.state === 'waiting' ) ? (
                 <>
-                    <p className='text-lg'>Room ID: <strong>{form.roomCreated}</strong></p>
+                    <p className='text-lg'>Game ID: <strong>{form.roomCreated}</strong></p>
                     <p className='text-lg'>Waiting oponent</p>
                     <NewtonsCradle
                         size={40}
