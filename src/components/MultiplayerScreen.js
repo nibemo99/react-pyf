@@ -56,10 +56,10 @@ const MultiplayerScreen = ( { setMainDisplay, setTitle } ) => {
 
             {( data.option < 3 ) ? (
                 <>
-                    <div className='relative flex w-full justify-evenly mt-5 border-2'>
-                        <div className={` absolute transition-all duration-500 bottom-2 rounded-xl left-[7.9rem] w-16 h-1 bg-rose-700  ${( data.option === 2 ) ? 'left-[20.2rem] w-12' : ''}`} />
-                        <button className='p-4 text-xl cursor-pointer' onClick={changeHandler}>{t( `Create` )}</button>
-                        <button className='p-4 text-xl cursor-pointer' onClick={changeHandler}>{t( `Join` )}</button>
+                    <div className='relative flex w-full justify-evenly mt-5'>
+                        {/* <div className={` absolute transition-all duration-500 bottom-2 rounded-xl left-[7.9rem] w-16 h-1 bg-rose-700  ${( data.option === 2 ) ? 'left-[20.2rem] w-12' : ''}`} /> */}
+                        <button className={`px-4 my-4 text-xl cursor-pointer relative transition-all duration-500 before:absolute before:-bottom-1 before:right-0 before:left-0 before:bg-red-500 before:rounded-xl before:transition-all before:duration-300 ${( data.option === 1 ) ? 'before:h-[4px]' : 'before:h-[0px] text-gray-500'}`} onClick={changeHandler}>{t( `Create` )}</button>
+                        <button className={`px-4 my-4 text-xl cursor-pointer relative transition-all duration-500 before:absolute before:-bottom-1 before:right-0 before:left-0 before:bg-red-500 before:rounded-xl before:transition-all before:duration-300 ${( data.option === 2 ) ? 'before:h-[4px]' : 'before:h-[0px] text-gray-500'}`} onClick={changeHandler}>{t( `Join` )}</button>
                     </div>
                     <CreateGame key={data.option} option={data.option} setOption={setData} />
                 </>
