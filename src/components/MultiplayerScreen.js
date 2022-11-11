@@ -3,8 +3,12 @@ import CreateGame from './CreateGame'
 import MultBoard from './MultBoard'
 import socket from '../utils/socket'
 import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const MultiplayerScreen = ( { setMainDisplay, setTitle } ) => {
+
+    const { t } = useTranslation();
+
     const [data, setData] = useState( {
         option: 1,
         host: {},
@@ -48,13 +52,14 @@ const MultiplayerScreen = ( { setMainDisplay, setTitle } ) => {
             <button
                 onClick={handleBack}
                 className='rounded-xl shadow-sm shadow-blue-700 py-4 mx-auto my-4 w-1/2 hover:bg-blue-700 hover:text-white hover:scale-105 ease-out duration-500 focus:bg-blue-700 focus:text-white focus:scale-105'
-            >Back</button>
+            >{t( `Back` )}</button>
 
             {( data.option < 3 ) ? (
                 <>
-                    <div className='flex w-full justify-evenly mt-5'>
-                        <button className='p-4 text-xl cursor-pointer' onClick={changeHandler}>Create</button>
-                        <button className='p-4 text-xl cursor-pointer' onClick={changeHandler}>Join</button>
+                    <div className='relative flex w-full justify-evenly mt-5 border-2'>
+                        <div className={` absolute transition-all duration-500 bottom-2 rounded-xl left-[7.9rem] w-16 h-1 bg-rose-700  ${( data.option === 2 ) ? 'left-[20.2rem] w-12' : ''}`} />
+                        <button className='p-4 text-xl cursor-pointer' onClick={changeHandler}>{t( `Create` )}</button>
+                        <button className='p-4 text-xl cursor-pointer' onClick={changeHandler}>{t( `Join` )}</button>
                     </div>
                     <CreateGame key={data.option} option={data.option} setOption={setData} />
                 </>
