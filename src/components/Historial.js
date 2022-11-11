@@ -112,7 +112,7 @@ const Historial = ( { setMainDisplay } ) => {
 
                 <div className='border-2 w-full px-3 pb-8 grid grid-cols-2 gap-2'>
                   <div>
-                    <p className={` ${( parsedHistory[renderLista - 1].data.me[parsedHistory[renderLista - 1].data.me.length - 1].fijas === 4 ) ? 'text-2xl font-bold animate-wiggle animate-colorChange' : 'text-2xl'}`}>{parsedHistory[renderLista - 1].data.meName}</p>
+                    <p className={` ${( parsedHistory[renderLista - 1].data.me[parsedHistory[renderLista - 1].data.me.length - 1]?.fijas === 4 ) ? 'text-2xl font-bold animate-wiggle animate-colorChange' : 'text-2xl'}`}>{parsedHistory[renderLista - 1].data.meName}</p>
                     <div className='grid grid-cols-3 mx-auto bg-blue-300 my-1 text-lg'>
                       <p>Picas</p>
                       <p>Number</p>
@@ -124,7 +124,7 @@ const Historial = ( { setMainDisplay } ) => {
                   </div>
 
                   <div>
-                    <p className={`${( parsedHistory[renderLista - 1].data.oponent[parsedHistory[renderLista - 1].data.oponent.length - 1].fijas === 4 ) ? 'text-2xl font-bold animate-wiggle animate-colorChange' : 'text-2xl'}`} >{parsedHistory[renderLista - 1].data.oponentName}</p>
+                    <p className={`${( parsedHistory[renderLista - 1].data.oponent[parsedHistory[renderLista - 1].data.oponent.length - 1]?.fijas === 4 ) ? 'text-2xl font-bold animate-wiggle animate-colorChange' : 'text-2xl'}`} >{parsedHistory[renderLista - 1].data.oponentName}</p>
                     <div className='grid grid-cols-3 mx-auto bg-blue-300 my-1 text-lg'>
                       <p>Picas</p>
                       <p>Number</p>
