@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import Intento from './Intento'
+import gifs from '../utils/gifs'
 import socket from '../utils/socket'
 import { useEffect } from 'react'
 import { DotWave } from '@uiball/loaders'
@@ -14,7 +15,8 @@ const MultBoard = ( { data, setTitle } ) => {
         host: [],
         guest: [],
         current: '',
-        winner: ''
+        winner: '',
+        won: ''
     } )
 
     useEffect( () => {
@@ -28,16 +30,19 @@ const MultBoard = ( { data, setTitle } ) => {
         const { guess, rol } = res
         setIntentos( prev => ( { ...prev, [rol]: [...prev[rol], guess] } ) )
         if ( guess.fijas === 4 ) {
-            setIntentos( prev => ( { ...prev, winner: data[rol].name } ) )
+            let temp = ''
             if ( rol === data.status ) {
                 setTitle( t( 'You win!' ) )
+                temp = 'truee'
             } else {
                 setTitle( `${data[rol].name} ${t( 'wins!' )}` )
+                temp = 'falsee'
             }
+            setIntentos( prev => ( { ...prev, winner: data[rol].name, won: temp } ) )
         }
     }
 
-    const arrFn = ( e ) => {
+    const quickFix = ( e ) => {
         if ( !intentos.winner ) return
         addToLocalStorage()
     }
@@ -139,94 +144,109 @@ const MultBoard = ( { data, setTitle } ) => {
         localStorage.historial = JSON.stringify( temp )
     }
 
+    const setRandomGif = ( array ) => {
+        return array[Math.floor( Math.random() * array.length )]
+    }
+
     return (
-        <div className='border-2 w-full px-3 pb-8 grid grid-cols-2 gap-2'>
-            <div>
-                <p className={` ${( data.host.name === intentos.winner ) ? 'text-2xl font-bold animate-wiggle animate-colorChange' : 'text-2xl'}`}>{data.host.name}</p>
-                <div className='grid grid-cols-3 mx-auto bg-blue-300 my-1 text-lg'>
-                    <p>Picas</p>
-                    <p>{t( 'Number' )}</p>
-                    <p>Fijas</p>
-                </div>
-                {arrFn( 'hey' )}
-                {intentos.host.map( ( element, index ) => {
-                    return <Intento key={index} element={element} multi={true} />
-                } )}
-                {( data.status === 'host' && !intentos.winner ) ? (
-                    <>
-                        <div className='flex flex-col items-center justify-center' >
-                            <input
-                                id='input'
-                                value={intentos.current}
-                                onKeyUp={submitHandler}
-                                onChange={checkSecret}
-                                className='text-center py-1 my-3 w-2/5 focus:scale-105 ease-out duration-300'
-                            />
-                            <button
-                                className='pl-3 '
-                                onClick={submitHandler}
-                            >
-                                Send
-                                <img
-                                    alt=''
-                                    src='https://cdn-icons-png.flaticon.com/512/271/271228.png'
-                                    className=' inline h-4 ml-1 mb-[2px] rounded-full object-cover'
+        <>
+            <div className='border-2 w-full px-3 pb-8 grid grid-cols-2 gap-2'>
+                <div>
+                    <p className={` ${( data.host.name === intentos.winner ) ? 'text-2xl font-bold animate-wiggle animate-colorChange' : 'text-2xl'}`}>{data.host.name}</p>
+                    <div className='grid grid-cols-3 mx-auto bg-blue-300 my-1 text-lg'>
+                        <p>Picas</p>
+                        <p>{t( 'Number' )}</p>
+                        <p>Fijas</p>
+                    </div>
+                    {quickFix( 'hey' )}
+                    {intentos.host.map( ( element, index ) => {
+                        return <Intento key={index} element={element} multi={true} />
+                    } )}
+                    {( data.status === 'host' && !intentos.winner ) ? (
+                        <>
+                            <div className='flex flex-col items-center justify-center' >
+                                <input
+                                    id='input'
+                                    value={intentos.current}
+                                    onKeyUp={submitHandler}
+                                    onChange={checkSecret}
+                                    className='text-center py-1 my-3 w-2/5 focus:scale-105 ease-out duration-300'
                                 />
-                            </button>
-                        </div>
-                    </>
-                ) : null}
-                {data.status === 'guest' && !intentos.winner ? (
-                    <>
-                        <div className='flex flex-col items-center justify-center pt-4' >
-                            <DotWave size={47} speed={2} />
-                        </div>
-                    </>
-                ) : null}
-            </div>
-            <div>
-                <p className={`${( data.guest.name === intentos.winner ) ? 'text-2xl font-bold animate-wiggle animate-colorChange' : 'text-2xl'}`} >{data.guest.name}</p>
-                <div className='grid grid-cols-3 mx-auto bg-blue-300 my-1 text-lg'>
-                    <p>Picas</p>
-                    <p>{t( 'Number' )}</p>
-                    <p>Fijas</p>
+                                <button
+                                    className='pl-3 '
+                                    onClick={submitHandler}
+                                >
+                                    {t( 'Send' )}
+                                    <img
+                                        alt=''
+                                        src='https://cdn-icons-png.flaticon.com/512/271/271228.png'
+                                        className=' inline h-4 ml-1 mb-[2px] rounded-full object-cover'
+                                    />
+                                </button>
+                            </div>
+                        </>
+                    ) : null}
+                    {data.status === 'guest' && !intentos.winner ? (
+                        <>
+                            <div className='flex flex-col items-center justify-center pt-4' >
+                                <DotWave size={47} speed={2} />
+                            </div>
+                        </>
+                    ) : null}
                 </div>
-                {intentos.guest.map( ( element, index ) => {
-                    return <Intento key={index} element={element} multi={true} />
-                } )}
-                {( data.status === 'guest' && !intentos.winner ) ? (
-                    <>
-                        <div className='flex flex-col items-center justify-center'>
-                            <input
-                                id='input'
-                                value={intentos.current}
-                                onKeyUp={submitHandler}
-                                onChange={checkSecret}
-                                className='text-center py-1 my-3 w-2/5 focus:scale-105 ease-out duration-300'
-                            />
-                            <button
-                                className='pl-3 '
-                                onClick={submitHandler}
-                            >
-                                Send
-                                <img
-                                    alt=''
-                                    src='https://cdn-icons-png.flaticon.com/512/271/271228.png'
-                                    className=' inline h-4 ml-1 mb-[2px] rounded-full object-cover'
+                <div>
+                    <p className={`${( data.guest.name === intentos.winner ) ? 'text-2xl font-bold animate-wiggle animate-colorChange' : 'text-2xl'}`} >{data.guest.name}</p>
+                    <div className='grid grid-cols-3 mx-auto bg-blue-300 my-1 text-lg'>
+                        <p>Picas</p>
+                        <p>{t( 'Number' )}</p>
+                        <p>Fijas</p>
+                    </div>
+                    {intentos.guest.map( ( element, index ) => {
+                        return <Intento key={index} element={element} multi={true} />
+                    } )}
+                    {( data.status === 'guest' && !intentos.winner ) ? (
+                        <>
+                            <div className='flex flex-col items-center justify-center'>
+                                <input
+                                    id='input'
+                                    value={intentos.current}
+                                    onKeyUp={submitHandler}
+                                    onChange={checkSecret}
+                                    className='text-center py-1 my-3 w-2/5 focus:scale-105 ease-out duration-300'
                                 />
-                            </button>
-                        </div>
-                    </>
-                ) : null}
-                {data.status === 'host' && !intentos.winner ? (
-                    <>
-                        <div className='flex flex-col items-center justify-center pt-4' >
-                            <DotWave size={47} speed={2} />
-                        </div>
-                    </>
-                ) : null}
+                                <button
+                                    className='pl-3 '
+                                    onClick={submitHandler}
+                                >
+                                    {t( 'Send' )}
+                                    <img
+                                        alt=''
+                                        src='https://cdn-icons-png.flaticon.com/512/271/271228.png'
+                                        className=' inline h-4 ml-1 mb-[2px] rounded-full object-cover'
+                                    />
+                                </button>
+                            </div>
+                        </>
+                    ) : null}
+                    {data.status === 'host' && !intentos.winner ? (
+                        <>
+                            <div className='flex flex-col items-center justify-center pt-4' >
+                                <DotWave size={47} speed={2} />
+                            </div>
+                        </>
+                    ) : null}
+                </div>
             </div>
-        </div>
+            {( intentos.winner ) ? (
+                <div className='w-2/3 h-[14rem] mb-8 '>
+                    <img
+                        alt='celebration final gif'
+                        src={setRandomGif( gifs[intentos.won] )}
+                        className='w-full h-full object-cover'
+                    />
+                </div>
+            ) : ''}
+        </>
     )
 }
 
