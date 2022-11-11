@@ -34,6 +34,7 @@ const Historial = ( { setMainDisplay } ) => {
     localStorage.historial = JSON.stringify( [] )
   }
   parsedHistory = JSON.parse( localStorage.historial )
+  parsedHistory.reverse()
 
 
   return (

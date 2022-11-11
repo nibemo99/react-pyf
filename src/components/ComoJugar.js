@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next';
+import { success, whosh, wow } from '../utils/audios';
 import TutorialCarrousel from './TutorialCarrousel'
 
 const ComoJugar = ( { setMainDisplay, setRandomNumber, calcRandomNumber } ) => {
@@ -17,6 +18,15 @@ const ComoJugar = ( { setMainDisplay, setRandomNumber, calcRandomNumber } ) => {
     function primerosPasosHandler ( event ) {
         if ( estadoBoton === '' ) setEstadoBoton( 'animate-agrandar' )
         if ( estadoBoton === 'animate-disminuir' ) setEstadoBoton( 'animate-agrandar' )
+    }
+
+    const handleSound = () => {
+        success.play()
+        wow.play()
+        whosh.play()
+
+        console.log( success )
+        // alert( 'hey' )
     }
 
     return (
@@ -66,6 +76,7 @@ const ComoJugar = ( { setMainDisplay, setRandomNumber, calcRandomNumber } ) => {
             {( estadoBoton === '' || estadoBoton === 'animate-disminuir' ) && (
                 <>
                     <button
+                        onClick={handleSound}
                         className='rounded-xl py-1 mx-5 my-2 hover:scale-105 ease-out duration-500 grid grid-cols-2 items-center gap-4 shadow-sm shadow-blue-700 hover:shadow-md  hover:shadow-orange-500 focus:shadow-orange-500 focus:shadow-md focus:scale-105'
                     >
                         <p className='text-lg text-gray-400 pl-4'>{t( "Coming soon" )}</p>
